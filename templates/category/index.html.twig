@@ -1,0 +1,63 @@
+{#
+   * Created by PhpStorm.
+   * User: Nemzag aka Gazmen Arifi (Shkypi, 1979-09-30).
+   * Date: 2018-12-09
+   * Time: 20:55
+#}
+
+{% extends 'default.html.twig' %}
+
+{% block title %}Liste des catégories{% endblock %}
+
+{% block main %}
+
+    <br>
+
+    <h1>Liste des catégories :</h1>
+
+    <hr class="my-4">
+
+    {% for message in app.flashes('category_success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('category_danger') %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <a href="{{ path('category_new') }}" class="btn btn-success col text-white text-left" role="button"> <i class="far fa-plus-square"></i><b> Ajouter une nouwêlle Catégorie…</b></a>
+
+    <br><br>
+
+    <table class="table table-hover table-bordered" style="width: 100%;margin-left: auto; margin-right: auto;">
+        <thead class="thead-light">
+            <tr>
+                <th>Catégorie's :</th>
+                <th style="width: 180px;">Modi‑fica‑tion's :</th>
+                <th style="width: 180px;">Id :</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr>
+                <td><a href="{{ path('category_show', {'id': category.id}) }}"><strong><i class="far fa-eye"></i> {{ category.categories }}</strong></a></td>
+
+                <td>
+                    <a href="{{ path('category_edit', {'id': category.id}) }}"><i class="fas fa-edit"></i> Éditer</a>
+                </td>
+
+                <td>{{ category.id }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Pas de en‑registre‑mênt trouvé.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+

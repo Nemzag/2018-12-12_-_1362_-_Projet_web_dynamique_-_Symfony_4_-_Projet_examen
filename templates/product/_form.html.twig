@@ -1,0 +1,74 @@
+{#
+   * Created by PhpStorm.
+   * User: Nemzag aka Gazmen Arifi (Shkypi, 1979-09-30).
+   * Date: 2018-12-10
+   * Time: 14:45
+#}
+
+{{ form_start(form) }}
+
+{#
+Il est important de savoir qu'en plus de :
+- form(),
+qui affiche tout automatique‑mênt sans stylisation possible.
+
+Il existe :
+- form_start
+- form_row (label & widget)
+- form_label
+- form_widget
+- form_end
+- form_error
+
+#}
+
+<div class="form-group">
+    <h2 class="h6">{{ form_label(form.name) }}</h2>
+    {{ form_widget(form.name) }}
+</div>
+
+<div class="form-group">
+    <h2 class="h6">{{ form_label(form.price) }}</h2>
+    {{ form_widget(form.price) }}
+</div>
+
+<div class="form-group">
+    <h2 class="h6">{{ form_label(form.promotion) }}</h2>
+    {{ form_widget(form.promotion) }}
+</div>
+
+<div class="form-group">
+    <h2 class="h6">{{ 'Description (vous pouvez utiliser des tags HTML, pour un meilleur rendu) :'}}</h2>
+    {{ form_widget(form.description) }}
+</div>
+
+<div class="form-group">
+    <h2 class="h6">{{ form_label(form.url) }}</h2>
+    {{ form_widget(form.url) }}
+</div>
+
+<div class="form-group">
+    <h2 class="h6">{{ form_label(form.image) }}</h2>
+    {{ form_widget(form.image) }}
+</div>
+
+<div class="form-group">
+    {#<h2 class="h6">{{ form_label(form.date_added) }}</h2>#}
+    {{ form_widget(form.date_added) }}
+</div>
+
+<div class="form-group">
+    <h2 class="h6">{{ form_label(form.category) }}</h2>
+    {{ form_widget(form.category) }}
+</div>
+
+<!-- Impossible de trouver quelconque information sur commênt créé une option dans le Twig pour un form_row, documentation très très mal faite et très incomplete. -->
+
+<hr class="my-4">
+
+<button class="btn btn-warning col text-left text-white">
+    <i class="fas fa-share-square"></i><b> {{ button_label|default(' Sauve‑gardez la modi‑fica‑tion') }}</b></button>
+
+<br><br>
+
+{{ form_end(form) }}

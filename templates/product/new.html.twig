@@ -1,0 +1,48 @@
+{#
+ * Created by PhpStorm.
+ * User: Nemzag aka Gazmen Arifi (Shkypi, 1979-09-30).
+ * Date: 2018-12-08
+ * Time: 13:17
+#}
+
+{% extends 'default.html.twig' %}
+
+{% block title %}Encoder le nouveau produit{% endblock %}
+
+{% block main %}
+
+    <br>
+
+    <h1 class="h1">Encoder le nouveau produit :</h1>
+
+    <hr class="my-4">
+
+    {% for message in app.flashes('product_success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('product_danger') %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <a href="{{ path('product_index') }}" class="btn btn-primary col-sm text-left text-white"><i class="far fa-eye"></i><b> Re‑venir à la liste des produits</b></a>
+
+    <br><br>
+
+    <div class="row">
+
+        <div class="col-md-10">
+
+
+            {{ include('product/_form.html.twig', {'button_label': ' Sauve‑gardez la modi‑fica‑tion'}) }}
+
+            <br><br>
+
+        </div>
+
+    </div>
+
+{% endblock %}

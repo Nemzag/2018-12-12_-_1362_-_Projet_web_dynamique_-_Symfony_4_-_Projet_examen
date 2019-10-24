@@ -1,0 +1,61 @@
+{#
+   * Created by PhpStorm.
+   * User: Nemzag aka Gazmen Arifi (Shkypi, 1979-09-30).
+   * Date: 2018-12-09
+   * Time: 20:55
+#}
+
+{% extends 'default.html.twig' %}
+
+{% block title %}Category{% endblock %}
+
+{% block main %}
+
+    <br>
+
+    <h1>Catégorie : « {{ category.categories }} »</h1>
+
+    <hr class="my-4">
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('danger') %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <a href="{{ path('category_index') }}" class="btn btn-primary col-sm text-left text-white"><i class="far fa-eye" role="button"></i><b> Re‑venir à la liste de Catégorie</b></a>
+
+    <br><br>
+
+    <table class="table table-hover table-bordered" style="width: 100%;margin-left: auto; margin-right: auto;">
+
+        <tbody class="thead-light">
+
+            <tr>
+                <th style="width: 10em;">Id :</th>
+                <td style="width: 10em;">{{ category.id }}</td>
+            </tr>
+
+            <tr>
+                <th>Catégôrie :</th>
+                <td>{{ category.categories }}</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <hr class="my-4">
+
+    <a href="{{ path('category_edit', {'id': category.id}) }}" class="btn btn-info col-sm text-left text-white" role="button"><i class="fas fa-edit"></i><b> Éditer cette catégorie</b></a>
+
+    <br><br>
+
+    {{ include('category/_delete_form.html.twig') }}
+
+{% endblock %}

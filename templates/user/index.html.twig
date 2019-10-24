@@ -1,0 +1,128 @@
+{#
+ * Created by PhpStorm.
+ * User: Nemzag aka Gazmen Arifi (Shkypi, 1979-09-30).
+ * Date: 2018-12-08
+ * Time: 23:16
+#}
+
+
+{% extends 'default.html.twig' %}
+
+{% block title %}Liste de's utilisateur's{% endblock %}
+
+{%  block main %}
+
+    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')  %}
+
+        <section>
+
+            <br>
+
+            <div>
+                <h1 style="text-align: justify;">Liste des utilisateurs du site :</h1>
+
+                <hr class="my-4">
+
+                {% for message in app.flashes('user_uccess') %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                {% for message in app.flashes('user_danger') %}
+                    <div class="alert alert-danger">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+
+                <a href="{{ path('user_new') }}" class="btn btn-success col text-white text-left" role="button"> <i class="far fa-plus-square"></i><b> Ajouter un nouweau utilisateur</b></a>
+
+                <br><br>
+
+                <table class="table table-hover table-bordered" style="width: 100%;margin-left: auto; margin-right: auto;">
+                    <thead class="thead-light">
+                    <tr>
+
+                        <th scope="col">Image</th>
+
+                        {#
+                        <th scope="col">Nom de<br>utilisateur :</th>
+                        #}
+
+                        <th scope="col">E‑mail :</th>
+
+                        {#
+                        <th scope="col">Mot de passe :</th>
+
+                        <th scope="col">Prénom :</th>
+
+                        <th scope="col">Nom :</th>
+
+                        <th scope="col">Jour de<br>naissance</th>
+
+                        <th scope="col">Présentation</th>
+                        #}
+
+                        <th scope="col">Date de<br>inscription :</th>
+
+                        <th scope="col">Rôles :</th>
+
+                        <th scope="col">Modi‑fica‑tion's :</th>
+
+                        <th scope="col">Id</th>
+
+                    </tr>
+
+                    </thead>
+                    <tbody>
+
+                    {% for user in users %}
+                    <tr>
+                        <td><a href="{{ path('user_show', {id:user.id}) }}"><img src="{{ asset('img/users/') ~ user.image }}" alt="{{ user.username }}"></a></td>
+
+                        {#
+                        <td class="user-username" style="text-align: justify;"><a href="{{ path('user_show', {'id': user.id}) }}">{{ user.username }}</a></td>
+                        #}
+
+
+                        <td class="user-email"><a href="{{ path('user_show', {id:user.id}) }}"><i class="far fa-eye"></i> <strong>{{ user.email }}</strong></a></td>
+
+                        {#
+                        <!-- Password avec filtre pour ne afficher que 12 caractères. -->
+                        <td class="user-password">{{ user.password[:12]~'…' }} </td>
+
+                        <td class="user-firstname">{{ user.firstname }} </td>
+
+                        <td class="user-lastname">{{ user.lastname }} </td>
+
+                        <td class="user-birthday">{{ user.birthDay ? user.birthDay|date('Y-m-d H:i:s') : '' }}</td>
+
+                        <td class="user-presentation">{{ user.presentation }}</td>
+                        #}
+
+                        <td>{{ user.inscriptionDate ? user.inscriptionDate|date('Y-m-d H:i:s') : '' }}</td>
+
+                        <td class="user-roles">{{ user.roles[0] }}</td>
+
+                        {% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN') or is_granted('ROLE_CONTRIBUTOR') %}
+
+                        <td><a href="{{ path('user_edit', {'id': user.id}) }}"><i class="fas fa-edit"></i> Editer</a></td>
+
+                        <td class="user-id">{{ user.id }}</td>
+
+                        {%  endif %}
+
+                    </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="12">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </section>
+
+    {%  endif %}
+
+{% endblock %}

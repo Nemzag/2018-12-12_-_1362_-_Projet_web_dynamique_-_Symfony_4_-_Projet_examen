@@ -1,0 +1,40 @@
+{#
+* Created by PhpStorm.
+* User: nemzag aka Gazmen Arifi.
+* Date: 2018-12-10
+* Time: 14:09
+#}
+
+{% extends 'default.html.twig' %}
+
+{% block title %}Édition de's commêntaire's{% endblock %}
+
+{% block main %}
+
+    <br>
+
+    <h1>Édition de's commêntaire's</h1>
+
+    <hr class="my-4">
+
+    {% for message in app.flashes('comment_success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('comment_danger') %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <a href="{{ path('comment_index') }}" class="btn btn-primary col-sm text-left text-white"><i class="far fa-eye"></i><b> Re‑venir à la liste des commentaires</b></a>
+    <br><br>
+
+    {{ include('comment/_form.html.twig', {'button_label': ' Mettre à jour / Modi‑fier'}) }}
+
+    <br>
+
+    {{ include('comment/_delete_form.html.twig') }}
+
+{% endblock %}
