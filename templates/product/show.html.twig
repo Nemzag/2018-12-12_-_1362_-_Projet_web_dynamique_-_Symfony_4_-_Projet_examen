@@ -1,0 +1,257 @@
+{#
+   * Created by PhpStorm.
+   * User: Nemzag aka Gazmen Arifi (Shkypi, 1979-09-30).
+   * Date: 2018-12-02
+   * Time: 11:33
+#}
+
+{% extends 'default.html.twig' %}
+
+{% block title %}Détail's du produit{% endblock %}
+
+{% block main %}
+
+    <br>
+
+    <h1 class="h1"><a href="{{ product.url }}" target="_blank">{{ product.name }}</a></h1>
+
+    <hr class="my-4">
+
+    <a href="{{ path('product_index' ) }} " class="btn btn-primary col text-left text-white"><i class="far fa-eye"></i><b> Re‑venir à la liste des produits</b></a>
+
+    <br><br>
+
+    <div class="jumbotron">
+
+        <div class="row">
+
+            <div class="col-md-5">
+
+                <!-- Afficher l'image zoomé en modal serait possible mais pro un projet de classe, non visible, cela ne sert pas vrai‑mênt à grand chose de le faiqe. -->
+                <img src=" {{ asset( 'img/products/' ) ~ product.image }} " alt="{{ product.image }}" style="width: 400px; border-radius: 0.6em;" class="border border-info">
+            </div>
+
+            <div class="col-md-7">
+
+                <h2 class="h4"><a href="#">{{ product.category.categories | capitalize }}</a></h2>
+
+                <small class="text-info">(Message pour le prof, le lien du titre principale va vers le constructeur…)</small>
+
+                <h3 class="h5">Prix T.V.A.C. :</h3>
+
+                <p class=""> {% if product.promotion > 0 %} {{ (product.price - (product.price * product.promotion / 100)) | number_format(2, ",", " ") }}&euro; (
+                        <span style="color: blue;">−{{ product.promotion }}%</span>)
+                        <br>
+                        <del style="color:red;"> {{ product.price | number_format(2, ",", " ") }}&euro;</del>{% else %}
+                        {{ product.price | number_format(2, ",", " ") }}&euro;{% endif %} </p>
+
+                <!-- Notation -->
+                <h3 class="h5">Notation globale du produit :</h3>
+
+                {# J'estime que seu les utilisateurs peuvent voter pas les admins et vendeurs #}
+                {% if is_granted('ROLE_USER') %}
+
+                    <form action="" class="form-group" method="post">
+
+                        <!-- Si 0 points -->
+                        <button type="submit" id="zero-star" name="one-star" class="btn btn-dark" title="0 points">
+                            <i class="fas fa-star"></i></button>
+
+                        <!-- Si 1 points -->
+                        <button type="submit" id="one-star" name="one-star" class="btn btn-danger" title="1 points">
+                            <i class="fas fa-star"></i></button>
+
+                        <!-- Si 2 points -->
+                        <button type="submit" id="two-star" name="two-star" class="btn btn-warning" title="2 points">
+                            <i class="fas fa-star" style="color: white;"></i></button>
+
+                        <!-- Si 3 points -->
+                        <button type="submit" id="three-star" name="three-star" class="btn btn-success" title="3 points">
+                            <i class="fas fa-star"></i></button>
+
+                        <!-- Si 4 points -->
+                        <button type="submit" id="four-star" name="four-star" class="btn btn-info" title="4 points">
+                            <i class="fas fa-star"></i></button>
+
+                        <!-- Si 5 points -->
+                        <button type="submit" id="five-star" name="five-star" class="btn btn-primary" title="5 points">
+                            <i class="fas fa-star"></i></button>
+
+                    </form>
+
+                {% else %}
+
+                    <!--
+                              5 text-primary (blue)
+                              4 text-success (green)
+                              3 text-secondary (gray)
+                              2 text-warning (yellow)
+                              1 text-danger (red)
+                              0 text-dark (black)
+                              -->
+                    {% if notation == null %}
+
+                        {{ "Il n'y aucun vote actuelle‑mênt." }}
+
+                        {% if is_granted("ROLE_SUPER_ADMIN") or is_granted("ROLE_ADMIN") or is_granted("ROLE_CONTRIBUTOR") or is_granted("ROLE_MODERATEUR") %}
+
+                            <br>
+
+                            {{ "Seul les utilisateurs peuvent voté, pas les contributeurs, modérateurs, administrateurs et le super‑administrateur." }}
+
+                        {% endif %}
+
+                    {% else %}
+
+                        <!-- Si 5 points -->
+                        {% if notation == 5 %}
+
+                            <button class="btn btn-primary" title="5 points"><i class="text-white fas fa-star"></i>&nbsp;&nbsp;<i class="text-white fas fa-star"></i>&nbsp;&nbsp;<i class="text-white fas fa-star"></i>&nbsp;&nbsp;<i class="text-white fas fa-star"></i>&nbsp;&nbsp;<i class="text-white fas fa-star"></i></button>
+
+                        {% endif %}
+
+                        <!-- Si 4 points -->
+                        {% if notation == 4 %}
+
+                            <button class="btn btn-info" title="4 points"><i class="text-white fas fa-star"></i>&nbsp;&nbsp;<i class="text-white fas fa-star"></i>&nbsp;&nbsp;<i class="text-white fas fa-star"></i>&nbsp;&nbsp;<i class="text-white fas fa-star"></i>&nbsp;&nbsp;<i class="text-white far fa-star"></i></button>
+
+                        {% endif %}
+
+                        <!-- Si 3 points -->
+                        {% if notation == 3 %}
+
+                        <button class="btn btn-success" title="3 points"><i class="text-white fas fa-star"></i>&nbsp;&nbsp;<i class="text-white fas fa-star"></i>&nbsp;&nbsp;<i class="text-white fas fa-star"></i>&nbsp;&nbsp;<i class="text-white far fa-star"></i>&nbsp;&nbsp;<i class="text-white far fa-star"></i></button>
+
+                        {% endif %}
+
+                        <!-- Si 2 points -->
+                        {% if notation == 2 %}
+
+                            <button class="btn btn-warning" title="2 points"><i class="text-white fas fa-star"></i>&nbsp;&nbsp;<i class="text-white fas fa-star"></i>&nbsp;&nbsp;<i class="text-white far fa-star"></i>&nbsp;&nbsp;<i class="text-white far fa-star"></i>&nbsp;&nbsp;<i class="text-white far fa-star"></i></button>
+
+                        {% endif %}
+
+                        <!-- Si 1 points -->
+                        {% if notation == 1 %}
+
+                            <button class="btn btn-danger" title="1 points"><i class="text-white fas fa-star"></i>&nbsp;&nbsp;<i class="text-white far fa-star"></i>&nbsp;&nbsp;<i class="text-white far fa-star"></i>&nbsp;&nbsp;<i class="text-white far fa-star"></i>&nbsp;&nbsp;<i class="text-white far fa-star"></i></button>
+
+                        {% endif %}
+
+                        <!-- Si 0 points -->
+                        {% if notation == 0 %}
+
+                            <button class="btn btn-dark" title="1 points"><i class="text-white far fa-star"></i>&nbsp;&nbsp;<i class="text-white far fa-star"></i>&nbsp;&nbsp;<i class="text-white far fa-star"></i>&nbsp;&nbsp;<i class="text-white far fa-star"></i>&nbsp;&nbsp;<i class="text-white far fa-star"></i></button>
+
+                        {% endif %}
+
+                    {% endif %}
+
+                {% endif %}
+
+                <br><br>
+
+                <!-- Description -->
+                <h3 class="h5">Description du produit :</h3>
+                <p> {{ product.description | raw | nl2br }} </p>
+
+                <small>Ajouté le {{ product.dateadded|date( 'd F Y', "Europe/Paris" ) }} </small>
+
+            </div>
+
+            <div class="col-md-12">
+
+                {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_CONTRIBUTOR') %}
+                    <hr class="my-4">
+
+                    <a href="{{ path( 'product_edit', {'id': product.id}) }}" class="btn btn-info col text-left text-white"><i class="fas fa-edit"></i><b> Éditer ce produit</b></a>
+
+                    <br><br>
+
+                    {{ include('product/_delete_form.html.twig') }}
+
+                {% endif %}
+
+            {% if is_granted('ROLE_USER') %}
+
+            <hr class="my-4">
+
+                <div class="form-group">
+                <form action="">
+
+                <label for="commentaire" class="h5">Commêntaires :</label>
+                <textarea class="form-control" id="commentaire" name="commentaire" rows="3"></textarea>
+
+                <br>
+
+                <button type="submit" class="btn btn-warning col text-left text-white"><i class="fas fa-trash-alt"></i><b> Postez le commêntaire.</b></button>
+                </form>
+                </div>
+
+                {% endif %}
+
+                <hr class="my-4">
+
+                <h3 class="h5">Liste des commêntaires des clients (plus récent au top) :</h3>
+
+                <ul class="list-group">
+
+                    {% if comments is empty %}
+                        <li class="list-group-item list-group-item-action flex-column align-items-start">
+
+                            <div class="d-flex w-100 justify-content-between">
+
+                                <h5 class="mb-1">{{ "Il n'y aucun com‑mêntaire actuelle‑mênt." }}</h5>
+
+                            </div>
+
+                        {% if is_granted("ROLE_SUPER_ADMIN") or is_granted("ROLE_ADMIN") or is_granted("ROLE_CONTRIBUTOR") or is_granted("ROLE_MODERATEUR") %}
+
+                            <br>
+
+                            <small>{{ "Seul les utilisateurs peuvent commênter, pas les contributeurs, modérateurs, administrateurs et le super‑administrateur.<br>
+                            Le Super‑administrateur, les Administrateurs, les Modérateurs, ne peuvent que éditer ou supprimer les commêntaires des utilisateurs…<br>Bien sur pour les commêntaires de exemples j'ai utilisé chaque niveaux présent afin de avoir de la variété…" }}</small>
+
+                        {% endif %}
+
+                        </li>
+                    {% endif %}
+
+                    {% for comments in comments | reverse  %}
+
+                    <li class="list-group-item list-group-item-action flex-column align-items-start">
+
+                        <div class="d-flex w-100 justify-content-between">
+
+                            <h5 class="mb-1"><i class="far fa-user-circle"></i> {{ comments.user.firstname }} {{ comments.user.lastname }}</h5>
+
+                            <small><time>{{ comments.dateAdded ? comments.dateAdded|date('Y-m-d H:i:s') }}</time></small>
+
+                        </div>
+
+                        <p class="mb-1">{{ comments.comment | raw | nl2br }}</p>
+
+                        <small></small>
+
+                        {% if app.user %}
+
+                            <!-- Si vous êtes les bon USER vous pouvez modifer votre commêntaires. -->
+                            {% if path('comment_edit', {'id': app.user.id}) == path('comment_edit', {'id': comments.user.id}) %}
+
+                                <a href="{{ path( 'comment_edit', {'id': comments.id }) }}" class="btn btn-info text-left text-white"><i class="fas fa-edit"></i><b> Ré‑éditer votre commentaire</b></a>
+                            {% endif %}
+
+                        {% endif %}
+
+                    </li>
+
+                {% endfor %}
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

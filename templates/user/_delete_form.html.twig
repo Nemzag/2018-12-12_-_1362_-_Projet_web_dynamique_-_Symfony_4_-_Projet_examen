@@ -1,0 +1,36 @@
+{#
+   * Created by PhpStorm.
+   * User: Nemzag aka Gazmen Arifi (Shkypi, 1979-09-30).
+   * Date: 2018-12-10
+   * Time: 14:45
+#}
+
+<!-- SI ADMIN OU SUPERADMIN ON PEUT EFFACER ET EDITER N'IMPORTE QUI. -->
+{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN') %}
+
+    <form method="post" action="{{ path('user_delete', {'id': user.id}) }}" onsubmit="return confirm('Etes vous sûr de vouloir effacé cette utilisateur ?');">
+
+        <input type="hidden" name="_method" value="DELETE">
+
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+
+        <button class="btn btn-danger col-sm text-left"><i class="fas fa-trash-alt"></i><b> Ef‑facer cette Utilisateur</b></button>
+
+    </form>
+
+    <!-- SI USER OU CONTRIBUTEUR OR MODÉRATEUR, ON PEUT EFFACER ET ÉDITER QUE SON COMPTE. -->
+{% elseif is_granted('ROLE_USER') or is_granted('ROLE_MODERATOR') or is_granted('ROLE_CONTRIBUTOR') %}
+
+    <form method="post" action="{{ path('user_delete', {'id': app.user.id}) }}" onsubmit="return confirm('Etes vous sûr de vouloir effacé cette utilisateur ?');">
+
+        <input type="hidden" name="_method" value="DELETE">
+
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+
+        <button class="btn btn-danger col-sm text-left"><i class="fas fa-trash-alt"></i><b> Ef‑facer mon profil utilisateur</b></button>
+
+    </form>
+
+    {% else %}
+
+{% endif %}

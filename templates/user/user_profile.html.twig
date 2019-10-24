@@ -1,0 +1,108 @@
+{#
+ * Created by PhpStorm.
+ * User: Nemzag aka Gazmen Arifi (Shkypi, 1979-09-30).
+ * Date: 2018-12-02
+ * Time: 10:05
+#}
+
+{% extends 'default.html.twig' %}
+
+{% block title %}Profile de l'utilisateur{% endblock %}
+
+{% if app.user %}
+
+    {% block main %}
+
+        <section>
+        {% if is_granted('ROLE_USER') or is_granted('ROLE_MODERATOR') or is_granted('ROLE_CONTRIBUTOR') or is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN') %}
+
+            <br>
+
+            <h1>Profile :</h1>
+
+            <hr class="my-4">
+
+            <a href="{{ path('home') }}" class="btn btn-primary col-sm text-left text-white"><i class="far fa-eye"></i><b> Re‑venir à l'Accueil</b></a>
+            <br><br>
+
+            <div class="card text-center">
+                <div class="card-body">
+
+                    <h2 class="card-title">Détail :</h2>
+
+                    <h6>Pseudonyme :</h6>
+
+                    <p class="card-text">{{ user.username }}</p>
+
+                    <h6>Date d'inscription :</h6>
+
+                    <p class="card-text">{{ user.inscriptiondate | date("Y-m-d") }}</p>
+
+                    <h6>Image :</h6>
+
+                    <p class="card-text">
+                        <img class="card-img-top" src="{{ asset('img/users/') ~ user.image }}" alt="image de {{ user.firstname }} {{ user.lastname }}" style="width: 400px;">
+                    </p>
+
+                    <h6>Prénom & nom :</h6>
+
+                    <p class="card-text">{{ user.firstname }} {{ user.lastname }}</p>
+
+                    <h6>Birth day :</h6>
+
+                    <p class="card-text">{{ user.birthday | date("Y-m-d H:i") }}</p>
+
+                    <h6>Présentation :</h6>
+
+                    <p class="card-text">{{ user.presentation }}</p>
+
+                    <h6>Niveau :</h6>
+
+                    <p class="card-text">{{ user.roles[0] }}</p>
+
+                </div>
+            </div>
+
+            {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN') or (is_granted('ROLE_MODERATOR')) %}
+
+                <hr class="my-4">
+
+                <button class="btn btn-info col"><a href="{{ path('user_edit', {'id': user.id}) }}" class="card-link text-white"><i class="fas fa-edit"></i> Modi‑fier le's info's.</a></button>
+
+				<br><br>
+				
+                <button class="btn btn-danger col"><a href="{{ path('user_delete', {'id': user.id}) }}" class="card-link text-white"><i class="fas fa-trash-alt"></i> Sup‑primer le côm‑pte.</a></button>
+
+            {% endif %}
+
+            <!-- PROTECTION CONTRE L'EFFACEMENT DE COMPTE NE NOUS APPERTENANT PAS !!! -->
+            {% if path('user_edit', {'id': app.user.id}) == path('user_edit', {'id': user.id}) %}
+
+                <hr class="my-4">
+
+                <!-- SI L'ID DE L'ADDRESSE EST PAS ÉGALE A L'ID DU LOG, PAS DE BOUTON -->
+                {% if is_granted('ROLE_CONTRIBUTOR') or is_granted('ROLE_USER') %}
+
+                        <a href="{{ path('user_edit', {'id': app.user.id}) }}" class="btn btn-info col text-left text-white"><i class="fas fa-edit"></i><b> Modi‑fier me's info's.</b></a>
+
+                        <br><br>
+
+                    {{ include('user/_delete_form.html.twig') }}
+
+                    <br>
+
+                <!-- SI L'ID DE L'ADDRESSE EST ÉGALE A L'ID DU LOG, PAS DE BOUTON -->
+                {% else %}
+
+                {% endif %}
+
+            {% endif %}
+
+        {% endif %}
+
+        </section>
+
+    {% endblock %}
+
+
+{% endif %}

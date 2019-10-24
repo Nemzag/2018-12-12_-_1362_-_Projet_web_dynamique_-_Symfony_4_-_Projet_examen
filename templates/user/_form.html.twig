@@ -1,0 +1,95 @@
+{#
+   * Created by PhpStorm.
+   * User: Nemzag aka Gazmen Arifi (Shkypi, 1979-09-30).
+   * Date: 2018-12-10
+   * Time: 14:45
+#}
+
+{{ form_start(form) }}
+
+<div class="form-group">
+    <h2 class="h6">{{ form_label(form.first_name) }}</h2>
+    {{ form_widget(form.first_name) }}
+</div>
+
+<div class="form-group">
+    <h2 class="h6">{{ form_label(form.last_name) }}</h2>
+    {{ form_widget(form.last_name) }}
+</div>
+
+<div class="form-group">
+    <h2 class="h6">{{ form_label(form.username) }}</h2>
+    {{ form_widget(form.username) }}
+</div>
+
+<div class="form-group">
+    <h2 class="h6">{{ form_label(form.email) }}</h2>
+    {{ form_widget(form.email) }}
+</div>
+
+<div class="form-group">
+    <h2 class="h6">{{ form_label(form.password) }}</h2>
+    {{ form_widget(form.password) }}
+</div>
+
+<div class="form-group">
+    <h2 class="h6">{{ form_label(form.confirmPassword) }}</h2>
+    {{ form_widget(form.confirmPassword) }}
+</div>
+
+<div class="form-group">
+    <h2 class="h6">{{ form_label(form.birth_day) }}</h2>
+    {{ form_widget(form.birth_day) }}
+</div>
+
+<div class="form-group">
+    <h2 class="h6">{{ form_label(form.presentation) }}</h2>
+    {{ form_widget(form.presentation) }}
+</div>
+
+<div class="form-group">
+    <h2 class="h6">{{ form_label(form.inscription_date) }}</h2>
+    {{ form_widget(form.inscription_date) }}
+</div>
+
+<div class="form-group">
+    <h2 class="h6">{{ "Image actuel :" }}</h2>
+    <img src="{{ asset('img/users/' ~ user.image) }}" title="Image de {{ user.firstName }} {{ user.lastName }}" alt="Image de {{ user.firstName }} {{ user.lastName }}" class="img-thumbnail w-50">
+    #}
+</div>
+
+<div class="form-group">
+    <h2 class="h6">{{ "Changer l'image, si vous le voulez :" }}</h2>
+    {{ form_widget(form.image) }}
+</div>
+
+<div class="form-group">
+
+    {% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN') %}
+
+        <h2 class="h6">{{ form_label(form.roles) }}</h2>
+        {{ form_widget(form.roles) }}
+
+    {% else %}
+
+        {{ form_widget(form.roles, {
+            'attr' : {
+                'readonly' : true,
+                'hidden' : true,
+                }
+            })
+        }}
+
+    {% endif  %}
+
+</div>
+
+           {# {{ form_widget(form.submit, {'label': 'Envoyez', 'attr' : {
+                'class' : 'text-left col',
+                } }) }}#}
+
+<hr class="my-4">
+
+<button class="btn btn-info col text-left"><i class="fas fa-edit"></i><b> {{ button_label|default('Mettre à jour / Modi‑fier') }}</b></button>
+
+            {{ form_end(form) }}

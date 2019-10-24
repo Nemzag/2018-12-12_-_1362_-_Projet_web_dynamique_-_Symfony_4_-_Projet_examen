@@ -1,0 +1,37 @@
+{#
+* Created by PhpStorm.
+* User: nemzag aka Gazmen Arifi.
+* Date: 2018-12-10
+* Time: 14:09
+#}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Comment{% endblock %}
+
+{% block body %}
+    <h1>Comment</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ comment.id }}</td>
+            </tr>
+            <tr>
+                <th>Comment</th>
+                <td>{{ comment.comment }}</td>
+            </tr>
+            <tr>
+                <th>Date_added</th>
+                <td>{{ comment.dateAdded ? comment.dateAdded|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('comment_index') }}">back to list</a>
+
+    <a href="{{ path('comment_edit', {'id': comment.id}) }}">edit</a>
+
+    {{ include('comment/_delete_form.html.twig') }}
+{% endblock %}

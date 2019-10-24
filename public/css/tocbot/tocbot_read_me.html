@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>tocBot, how to use it.</title>
+	<link rel="stylesheet" href="../prism/prism.css">
+	<style>
+        body {
+            font-family: "Courier new", monospace;
+        }
+        
+        main {
+            margin: 0 20%;
+        }
+	</style>
+</head>
+<body>
+<main>
+<h1>TocBot : how to use it :</h1>
+
+<p>You create two class,<br>
+one in a &lt;div&gt;, to display the content,<br>
+and one in the &lt;main&gt; to retrieve all it's content.<br>
+You also need to create id pro all "titles" to be able to use link's.</p>
+
+<pre><code class="language-javascript line-numbers">// Where to render the table of contents.
+  tocSelector: '.js-toc',
+// Where to grab the headings to build the table of contents.
+  contentSelector: '.js-toc-content',
+// Which headings to grab inside of the contentSelector element.
+  headingSelector: 'h1, h2, h3',
+});</code></pre>
+</main>
+<footer>
+    <script src="../../js/prism/prism.js"></script>
+</footer>
+</body>
+</html>

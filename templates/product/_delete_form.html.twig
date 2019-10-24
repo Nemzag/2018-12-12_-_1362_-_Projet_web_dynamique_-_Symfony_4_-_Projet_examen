@@ -1,0 +1,19 @@
+{#
+   * Created by PhpStorm.
+   * User: Nemzag aka Gazmen Arifi (Shkypi, 1979-09-30).
+   * Date: 2018-12-10
+   * Time: 14:45
+#}
+
+<form method="post" action="{{ path('product_delete', {'id': product.id}) }}" onsubmit="return confirm('Etes vous sûr de vouloir effacé ce produit ?');">
+
+    <input type="hidden" name="_method" value="DELETE">
+
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
+
+    {# Cela ne marche pas il faut donc l'écrire dans le EDIT. #}
+    {# <a href="{{ path('product_delete', {'id':product.id}) }}" class="btn btn-danger col text-left text-white"><i class="fas fa-trash-alt"></i> Effacer ce produit</a>#}
+
+    <button type="submit" class="btn btn-danger col text-left text-white"><i class="fas fa-trash-alt"></i><b> Ef‑facer ce produit</b></button>
+
+</form>

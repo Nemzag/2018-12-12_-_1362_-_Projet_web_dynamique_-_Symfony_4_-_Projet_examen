@@ -1,0 +1,22 @@
+{#
+* Created by PhpStorm.
+* User: nemzag aka Gazmen Arifi.
+* Date: 2018-12-10
+* Time: 14:09
+#}
+
+{{ form_start(form) }}
+
+<div class="form-group">
+    <h2 class="h6">{{ form_label(form.comment) }}</h2>
+    {{ form_widget(form.comment) }}
+</div>
+
+
+<hr class="my-4">
+
+<!-- Impossible de trouver quelconque information sur commênt créé une option dans le Twig pour un form_row, documentation très très mal faite et très incomplete. -->
+
+<button class="btn btn-info col text-left"><i class="fas fa-edit"></i><b> {{ button_label|default('Mettre à jour / Modi‑fier') }}</b></button>
+
+{{ form_end(form) }}

@@ -1,0 +1,307 @@
+{#
+ * Created by PhpStorm.
+ * User: nemzag aka Gazmen Arifi.
+ * Date: 2018-10-05
+ * Time: 13:37
+#}
+{% extends 'default.html.twig' %}
+
+{% block header %}
+    <header></header>
+{% endblock %}
+
+{% block main %}
+
+    <article>
+
+        <div class="jumbotron">
+
+            <h1 class="display-4" id="title-h1-online-shop">La Corne de Abondance,<br>magasin en ligne de Belgique…</h1>
+
+            <br>
+
+            <p class="lead">Bienvenu dans la Corne de abondance, l'hypermarché informatique en ligne le plus riche de l'internet.</p>
+            <p>Créez en 2018 par une équipe de jeune développeur de la région wallonne en Belgique, la Corne d'Abondance, à pour objectif de proposer un maximum de articles utiles à tous au prix le plus intéressant possible.</p>
+            <p>Soyez les bienvenus et merci pour votre visite.</p>
+
+            <hr class="my-4">
+
+            <!-- Description de la hiérarchie du site -->
+            <h4 class="h4">Nota‑Bene (pour le professeur Marthus) :</h4>
+
+            <section>
+                <h5 class="h5">Log‑in & Rôle's (attention les passes commênce toujours avec une majuscule) :</h5>
+
+                <ul class="list-group  bmd-list-group-sm">
+
+                    <li class="list-group-item">
+                        <div class="bmd-list-group-col">
+                            <h5 class="list-group-item-heading">Super‑Administrateur:</h5>
+
+                            <p class="list-group-item-text">Login : « shyperman@domain.ext » ou « gazmen@domain.ext »
+                                <br> Passe : « Shyperman » ou « Gazmen »</p>
+                            <p class="list-group-item-text">À tous les pouvoirs, ajout & suppression de utilisateurs, de produits, de commêntaires, et des administrateurs standard.</p>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item">
+                        <div class="bmd-list-group-col">
+                            <h5 class="list-group-item-heading">Administrateur :</h5>
+                            <p class="list-group-item-text">Login : « patrick.marthus@iepscf-namur.be »<br> Passe : « Patrick »
+                            </p>
+                            <p class="list-group-item-text">Ont tous les pouvoirs, ajout & suppression de utilisateurs, de produits, de commêntaires, mais pas de autre admin.</p>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item">
+                        <div class="bmd-list-group-col">
+                            <h5 class="list-group-item-heading">Contributeur :</h5>
+                            <p class="list-group-item-text">Login : « contributor@domain.ext »<br> Passe : « Contributor »</p>
+                            <p class="list-group-item-text">Peut ajouter des produits et catégories et modifier les informations déjà présente, mais ne peut pas ajouté ni supprimer des utilisateurs, ni administrateurs, ni les commêntaires.</p>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item">
+                        <div class="bmd-list-group-col">
+                            <h5 class="list-group-item-heading">Modérateur :</h5>
+                            <p class="list-group-item-text">Login : « moderator@domain.ext »<br> Passe : « Moderator »</p>
+                            <p class="list-group-item-text">Rectifie les commêntaires ou les supprimes. Peut aussi modifier les informations vulgaires de certains champs dans les profiles, mais avec parcimonie (si possible quelque mots mais pas des phrases)… Ne peut pas modifier les notations…</p>
+                        </div>
+                    </li>
+
+
+                    <li class="list-group-item">
+                        <div class="bmd-list-group-col">
+                            <h5 class="list-group-item-heading">Utilisateur :</h5>
+                            <p class="list-group-item-text">Login : « user@domain.ext » ou « shalavana@domain.ext »<br> Passe : « User » ou « Shalavana »</p>
+                            <p class="list-group-item-text">Peuvent unique‑mênt commênter & noter et voir leur page de profile, avec si possible la liste de tous leurs commêntaires par ordre chronologique descendant (mais cela est un degré de maitrise par une capacité terminale réclamé.</p>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <hr class="my-4">
+
+            <div class="indent">
+
+                <section>
+                    <h5 class="h5">Informations & décriptions sur les problèmes & issues connus :</h5>
+
+                    <p>Tous les pro‑blèmes mentionnés, avec af‑fichage de erreurs toujours présent dans mon projet, n’ont pas de trouver de solution malgré mes re‑cherche, je ne les ai pas laissé par flemmardise, mais unique‑mênt car elle était im‑possible à dé‑buggé avec mon niveau de côn‑ʒnaissance et car la documêntation et sup‑port en ligne était absente, in‑côm‑plète ou non fonctionnel dans mon cas, actuel et bien que j’ai de‑mandé une aide à de autres étudiants, qui pour la majeure partie, ne ont même pas daigné me ré‑spondre (« Discord »).</p>
+
+                    <p>Dans la page PROFILE, les bouttons <b class="text-danger">EFFACER</b> ou <b class="text-info">MODIFIER</b> un pro‑fil, n'ap‑paraissent pas, hormis, si l'on est ADMIN ou SUPER‑ADMIN…<br>É‑scrire un ID dif‑fèrent dans le lien pro‑fil, af‑fiche les pro‑fils des autres utilisateurs.<br>Ce qui n'est pas grave en soit…<br>Je n'ai pas trouvé le moyen de empêcher cela…<br>Pour rendre l'identi‑ficateur statique.
+                    </p>
+
+					<p>Il y a pro‑blème mêntionné, lors de l'ré‑édition de un « user », comme <code>Notice: Array to string conversion</code>, que je ne suis pas par‑venu à solutionné, mes recherches en ligne restant sans ré‑sponse, de ce fait je ne pouvais pas non plus à ac‑céder au formulaire de édition, notation et com‑mêntaire car je ne par‑viens à ob‑tenir la liste user à partir du « select » (« ChoiceType » de la classe entité « User ») automatique‑mênt pour la set dans le com‑mêntaire voulu…</p>
+					
+                    <p>Les votes de notation par bouton de couleur (actuelle‑mênt non fonctionnel) dans la page détaillé de un produit, n'est visible que avec le côm‑pte « user@domain.ext », car seul les utilisateurs peuvent voter pro les pro‑duits pour plus de im‑partialité et de ob‑jectivité…</p>
+
+                    <p>La page listant les pro‑duits n’af‑fiche pas les notations réel, mais la page du pro‑duit bien. Car je ne suis pas par‑venu à trouvé la fonction et boucle pour l'af‑ficher cor‑recte‑mênt dans le tableau.</p>
+
+                    <p>L'af‑fichage des com‑mêntaires est fonctionnel et le bouton de ré‑édition ap‑parait si on est loggé et si on est l'auteur, et l'entité prend côm‑pte le fait qu'un user ne peut voter que une fois pour un pro‑duit, mais je n'ai pas créé le pro‑cess du formulaire de com‑mêntaire pour pouvoir poster, le aire‑de‑texte existe bien mais il ap‑parait unique‑mênt quand on est loggé en tant que utilisateur ! Qui sont les seules habilités à voter selon moi.</p>
+
+                    <h6 class="h6">Post‑scriptum du <time>2018-12-10 :</time></h6>
+
+                    <p>Au com‑mênce‑mênt du pro‑ject, j'ai simple‑mênt suivie le PDF, et j'ai créé  des fichiers de entités, des côn‑trôleurs et formulaires à la mains, suivant le modèle du « Posts‑user », mais après avoir bien avancé dans mon travaille, j'ai re‑gardé la liste des com‑mandes le 7 décembre 2018, en tapant « php bin/console », pro me rendre compte que il existait <code>php bin/console make:crud</code> en plus de <code>php bin/console make:entity</code>, <code>php bin/console make:controller</code> et <code>php bin/console make:form</code>, l’avantage du <code>php bin/console make:crud</code> c’est que il fait aussi, les form, dès lors la commande <code>php bin/console make:form</code> est en fait inutile, je l'ai exécuté le 9 décembre 2018 pour les catégories, pour me rendre côm‑pte que il faisait pas mal des choses, que il fallait néan‑moins traduire en Français, ad‑apté, structuré puis stylisé en CSS, une fois fait le ré‑sultat était assez probant…</p>
+
+                    <p>J'ai alors décidé le 10 décembre de refaiqe entière‑mênt les fichiers de la classe Product et User, à la manière automatique de Symfony, pro ob‑tenir des résultat meilleurs, et ce, après avoir blindé l’entité de « Côn‑trainte de validation » et de plusieurs @Assert, et assigné les bonnes relation et les index unique sur deux champs à la fois, J'espère à ce moment finir le boulot.<br>Les anciens fichiers sont au format texte et je les ai gardé comme souvenir…</p>
+
+                    <h6 class="h6">Post‑scriptum du <time>2018-12-12 :</time></h6>
+
+                    <p>Je n’ai pas a‑jouxté de moteur de re‑cherche et le bouton ne fonctionne pas, car la nouweauté du pro‑jet et le manque de nombreux produits le rendait désuet !<br>
+                        Enfin ne nous l'avions pas vu en classe…</p>
+
+                    <p>J'ai bien ajouté des message « FlashBag », mais bizarre‑mênt pour les prix le « Regex » ne marche pas et le pattern ne se in‑scrit pas dans le code, ce qui est visible avec l'in‑specteur et le message n'ap‑parait pas non plus.<br>Il est dommage que nous n’ayons pas eu de cours de « Regex », car les certains inputs me af‑fiche souvent des erreurs alors que cela devrait passer et fonctionner selon les sites ou je les ai trouvé !</p>
+
+                    <p>J'ai aussi in‑séré des messages FlashBag en cas de suc‑cès, mais au dé‑part je pensais que il s'agissait des messages des @Assert,<br>grâce à une video de
+                        <a href="https://www.youtube.com/watch?v=6Ryu7-VSV5k&feature=youtu.be&list=PLjwdMgw5TTLX7wmorGgfrqI9TcA8nMb29&t=2100" target="_blank">GrafikArt.fr</a>, j'ai côm‑pris ce que étais votre de‑mande !!!</p>
+
+                    <p>Tenter de af‑ficher la page des com‑mêntaires pro un user qui n'en pas posté cause une erreur, je ne sais pas com‑mênt véri‑fier l'empty ou le null sur un ob‑jet !!!<br>
+                    Pour ce pro‑blème, af‑fichant une erreur de type <code>@ParamConverter</code>, j'ai trouvé après avoir cherché, que il côn‑seillait de ins‑tallé « SensioFrameworkExtraBundle » ce que j’ai fait sans parvenir à le faiqe fonctionner et af‑ficher ses message automatique… Malgré que j’ai a‑jouxté :</p>
+                    <code>/**<br>
+&nbsp;* @Route("/blog/{id}")<br>
+&nbsp;* @ParamConverter("post", class="SensioBlogBundle:Post")<br>
+&nbsp;*/</code>
+
+                    <p>C’est de ailleurs après avoir tenté de l’ins‑tallé avec un af‑fichage de erreur dans le terminal, que j’ai com‑mêncé à avoir le pro‑blème de message de erreur après sup‑pression de un user (peut‑être faut‑il exécuter un « log‑out » après celle‑ci et avant le <code>return $this->reDirectoToRoute()</code> ou <code>return $this->render()</code>, que j'ai a‑jouxté au code et route « user_delete » de ailleurs) ! Que je ne suis pas par‑venu à la re‑tirer, même après ré‑ins‑talla‑tion et la créa‑tion de un nouweau pro‑ject Symfony, et le trans‑fert des pages et con‑fig…</p>
+
+                    <p>J'aurais pu aussi a‑jouxter une pagination, mais comme de autre fonctionnalité (comme une gestion de erreur de page ou paramètre in‑existant), mais elle nécessitait de ins‑taller des bundles et aurait peut‑être causé des bugs au lance‑mênt chez vous, car vous les auriez pas ins‑tallé par manque de temps, je donc tenté de rester simple et de me baser sur ce que Symfony nous offre de base.</p>
+
+                    <h6 class="h6">Bundles à considerer :</h6>
+                    <ul>
+                        <li><a href="https://symfony.com/doc/bundles/" target="_blank">https://symfony.com/doc/bundles/</a></li>
+                        <li><a href="https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html" target="_blank">https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html</a></li>
+                        <li><a href="https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/annotations/converters.html" target="_blank">https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/annotations/converters.html</a></li>
+                        <li><a href="https://github.com/KnpLabs/KnpPaginatorBundle" target="_blank">https://github.com/KnpLabs/KnpPaginatorBundle</a></li>
+                    </ul>
+
+
+                </section>
+
+                <hr class="my-4">
+
+                <section>
+
+                    <h5 class="h5">Justification du non‑dépôt en première session (écrit le
+                        <time>2018-12-10 à 09H00 à l'intention du professeur Marthus) :</time>
+                    </h5>
+
+                    <p> Vous nous avez expliqué lors de un échec (comme cela est mon cas, en première session, puisque non‑rendu !), vous deviez justifier à l’administration, la raison, aussi me suis‑je dis, que vous l’écrire et vous le justifier ne serait pas de trop et pourrez‑vous aidé dans cette tache…<br>
+					Voici l’ex‑plica‑tion.</p>
+
+                    <p>Tout de abord, comme vous le savez je vivais à Dave / Jambes Amée l’année passée, j’ai emménagé dans un nouvelle ap‑parte‑mênt à Namur, dont la salon avait été divisé en deux par une cloison mural en Gyproc par l’ancien locataire, afin d’y placer une seconde chambre… Ã cause de leur enfant<br>Bien que je sois revenu le 25 aout 2018 de mes vacances en Macédoine et que j’ai emménagé dans la chambre dans un premier temps, et que je l’ai repeinte pou y installer mon lit et mes vête‑mênts, le propriétaire me avait demandé et ré‑clamé de attendre son re‑tour pro entamer les travaux dans les autres pièces et surtout pour détruire cette cloison, que il refusait que je fasse en son absence et sous son côn‑trôle.
+                    </p>
+
+                    <p>Il est re‑venue le 15 septembre 2018, et c’est après une ou deux semaine de attente et son in‑action, que je lui ai signalé que il fallait dé‑struire cette cloison…</p>
+
+                    <p>Par la suite, il a fallu que je dé‑tapisse, re‑peigne la totalité des pièces au nombre de cinq (hall, cuisine, salon, chambre mais c’était déjà fait, salle de bain) et que je trans‑porte les déchets de nombreuse fois, au centre de re‑cyclage à Champion / Bouge…<br>Le fait que je fasse des éstudes me prenait beaucoup de temps et je n’ai vrai‑mênt fini les travaux que vers fin mi‑novembre, je due ensuite transporter, positionner & monter les meubles, at‑tendre le passage du menuisier pour le nouvelle évier de la cuisine à fixer sur le nouveau meuble de support, j’ai dû ensuite allez le 29 octobre 2018 chez Brico, Casa, Blokker pour acheter des choses nécessaire à la vie seul (crochet, couteau à pain, couvert, bouchon de bain, rallonge électrique, assiettes, brossette, égouttoir…), allez le même jour chez « Cash Converter » pour vendre une multitude de livres (manga’s, comic’s) de ma jeunesse et des objets informatique & électronique in‑utile, qui occupait beaucoup de espace dans mon ancienne chambre… Allez chez divers magasins pour trouver une nouvelle penderie modulable en quatre colonne, qui coûterait 700€ et que je n’ai pas du fait de l’achat de mon nouveau P.C. et que toute façon, il n’avait pas en stock et il fallait at‑tendre le ré‑ap‑provi‑sionne‑mênt…<br>Et j’ai dû re‑tourné le lên‑demain chez Brico, car le bouchon de bain était trop petit, et chez Blokker car le range‑couvert était trop grand pour les tiroirs de mon meuble de cuisine, j’ai trouvé la bonne taille sur « Amazon.fr ».
+                    </p>
+
+                    <p>Et je ne parles pas des courses, nettoyages, linges, préparation des repas, visites amicale ou médicale et autres de autres jours…</p>
+
+                    <p>En prévision de l’achat de mon nouvelle second écran, j’ai dû trouver un modèle de bureau adapté à futur travail, car l’ancien que j’ai depuis 2001 ne le permettait pas :</p>
+
+                    <div style="text-align: center;">
+                        <a href="img/IMG_20181210_093509.jpg" target="_blank"><img src="img/IMG_20181210_093509.jpg" alt="Ancien bureau" title="Ancien bureau" style="border: 1px solid gray; width: 720px;"></a>
+                    </div>
+
+                    <br>
+
+                    <p>j’ai donc découvert un adéquat à 219,99$ et commandé le 28 octobre 2018, mon nouveau bureau
+                        <a href="https://www.amazon.com/HOMCOM-Modern-Symmetrical-L-Shaped-Computer/dp/B01MRONZCA" target="_blank">Aosom HomCom 69 sur « Amazon.com »</a> en passant par un service nommé « <a href="https://myus.com" target="_blank">MyUS.com »</a> car il ne livrait pas à en Belgique de base et était introuvable en Evrôpe, ce qui me a coûté 366,04$ avec les frais de livraison.
+                    </p>
+
+                    <p>J’avais auparavant contacté « Amazon.fr » & « Rue du Commerce », ainsi que Aosom France pro tenter de l’obtenir, sans succès, les communications était longue et l’écriture des messages aussi…</p>
+
+                    <div style="text-align: center;">
+                        <a href="img/aosom_homcom_69.jpg" target="_blank"><img src="img/aosom_homcom_69.jpg" alt="Aosom HomCom 69" title="Aosom HomCom 69" style="width: 720px; border: 1px solid gray;"></a>
+                    </div>
+
+                    <br>
+
+                    <p>Lorsque que il est arrivé le 9 novembre 2018, j’ai dû le monter et cela me a aussi pris une journée.<br>J’ai ensuite dû tout ranger & remettre en place, de mon ancien bureau vers le nouveau, PC, CD, écran, rangé les cartons, plastique et frigolite, les portés au centre des déchets…
+                    </p>
+
+                    <p>La couleur mâte des partis métallique, au lieu de chromé, les pieds de plastique noir au lieu de pied métallique, qui ne correspondait pas aux images du site et de Amazon.com, et le manque de une pièce (petit cylindre cachant un maintient par vis) m’ont obligé à contacter à Aosom.com, pour leur demander des cômptes, les messages que nous nous sommes envoyé pendant un certain temps m’ont aussi accaparer du temps, car il y avait des délais et écrire des emails on l’on doit décrire les raisons, prouver les achats, faiqe des photos et vidéos, coûte aussi du temps. Ils ne m’enverront pas la pièce manquante mais me dédommageront de 77$</p>
+
+                    <p>J’ai aussi eu des soucis avec mon drive G:\ (Games) de 2To, qui depuis 8 mois, s’éteignant quand je faisais des mises à jours de jeux à partir de Steam et ou ce trouvait mon dossier Google Drive et WWW de « W.A.M.P. », on tout mes cours et projet ce trouvait !!!</p>
+
+                    <p>J’ai découvert après avoir utilisé Seagate SeaTool, vu que c’était un Seagate S.S.H.D. acheté il y a plus de deux ans, et scanné le disque en écriture, sans erreur, puis lancé le test de écriture, que il y avait des erreurs de écriture, qui empêchait un de le formater compléte‑mênt et d’écrire dans cette partie du disque, il était foutu et plus sous garantis.</p>
+
+                    <p>J’avais avant de faiqe ces tests, créé un backup RAR de 1To. Je vous laisse imaginé le temps que cela a pris sur mon ancien P.C. Intel Quad Core 9650 3GHz, une journée et une nuit complète et arrivé à la fin, une erreur de Windows 10, défragmêntation automatique, pour cause de non utilisation, à fait tout manquer et le disque c’est étaient car on a écrit dans la zone interdite, j’ai dû refaire cette compression et boom deux jour encore à at‑tendre.</p>
+
+                    <p>J’ai dû commander un nouveau disque le 2 novembre 2018, encore un Seagate mais un Barracuda de 4To chez « Rue du Commerce », je l’ai reçu le 8 novembre 2018, j’ai dû ensuite tout retransféré et ré‑installé par-dessus pour éviter les cor‑ruption de fichier du au pro‑blème du disque pré‑cédent. Tout ceci me a pris pas mal de temps.</p>
+
+
+                    <p>Le 31 octobre 2018, j’ai du me rendre à l’hôtel de ville de Namur, au contribution, pour obtenir des informations, afin de obtenir la prime Wallonne de installation à la location, ils m’ont redirigé à Jambes, à la région Wallone, rue Jean‑Materne, qui m’ont envoyé au ministère de la santé (car étant handicapé), qui m’ont enfin rediriger au S.P.F. loge‑mênt, toujours à Jambes, et y rencontrer une assistante, très sympathique, pour m’expliquer mes droits 400€ de prime de installation une fois dans la vie et 148€ de aide au loge‑mênt par mois,<br>cela me a aussi pris une demi‑journée.
+                    </p>
+
+                    <p>J’ai aussi commandé le 31 octobre 2018 un nouvelle écran Samsung S24D330, chez Vanden Borre, ce que je vous ai dit en classe, pour travailler dans des bonnes conditions, j’attendais son arrivé pro entamé le projet Symfony, je l’ai reçu le 13 novembre 2018.</p>
+
+                    <p>J’ai du aussi allé à l’hôtel de ville le 5 novembre 2018, pour signi‑fier mon change‑mênt de adresse afin que l’agent de quartier passe, car je ne pouvais pas le faiqe, avec un ap‑parte‑mênt en travaux et non‑aménagé.</p>
+
+                    <p>J’ai ensuite le 19 novembre reçu la dernière pièce de mon nouveau PC desktop, l’Intel i7 6 Cores 3,5GHz (vous le verrez ainsi que les autres composant dans la partie « Product » du site, hommage à ma nouvelle machine),<br>j’ai donc entamé ce jours‑là, son montage, tous c’est bien passé, et il s’est allumé, j’ai du transféré tout mes fichiers de mon ancien C:\ vers le nouveau C:\, puis installé Windows 10 par-dessus pro ne pas tout perdre (les fichiers de config & registre), j’ai eu pas mal de problème de conflit et de autorisation de sécurité que j’ai dû modi‑fier à la main ce qui me a aussi pris pas mal de temps (environs trois jours de boulot)…
+                    </p>
+
+                    <p>Le lendemain, j’ai eu un soucis avec l’alimêntation Corsair CS750M, il faisait un bruit énorme, après avoir cherché sur le net, j’ai appris que ce modèle était défaillant et que pas mal de personnes avaient eu des soucis avec, j’ai donc du contacter Corsair, plusieurs, leurs envoyé photos, vidéos, preuve de achat, ils m’ont proposé un R.M.A. Advanced, la cor‑respondance me a aussi couté du temps… J’ai reçu l’alimêntation j’ai dû l’in‑stallé mais ce qui me a aussi coûté deux heures, car la position de l’alimêntation C.P.U. et la taille de mon ventilateur Noctua ND‑D15, a rendu la tâche peu com‑mode, car je ne voulais pas l’en‑levé, nettoyer et re‑mettre la pâte thermique…</p>
+
+                    <div style="text-align: center;">
+                        <iframe width="720" height="405" src="https://www.youtube.com/embed/3tsX6nChMDU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border: 1px solid gray;"></iframe>
+                    </div>
+
+                    <br><br>
+
+                    <p>Puis en classe vous avez annoncé que si l’on rendait son travail en première session, avec un re‑tard, vous ne retiriez de office des points, mais pas si on les rend en seconde session, je me suis donc dit que il serait plus judicieux de le rende à ce momênt‑là.</p>
+
+                    <p>Comme vous le savez,puisque je vous en avais parlé, j’utilisais mon dossier « WWW » de « W.A.M.P.64 » dans « Google Drive » afin de synchroniser mes fichiers facile‑mênt sur mes deux machines, sans passer par une clé U.S.B.,<br>le problème était que depuis longtemps (1996), j’avais un dossier « Mes Documênts » avec toute mon histoire informatique que j’avais placé sur un disque alternatif, appellé Image.<br>Depuis Windows 10, qui intègre de office OneDrive avec 15Go dans mon cas, le dossier « Mes Documênts » était défini de office dans ce OneDrive, le problème, c’est que en 2015, j’ai décidé de utiliser Google Drive, car je le trouvais plus pratique à l’utilisation, et offrait un stockage vidéos et images sans limite (mais que je n’utilise pas vu que j’up‑load mes vidéos sur YouTube.com et mes images sur PinTerest.com), mais depuis une récente mise à jour, il n’était plus possible de scroller dans la liste des up‑loads et down‑loads, et que la mise à jour des fichiers, surtout lors de l’installation de un projet Symfony prenait deux jour, un pour l’envoyé la autre pro le téléchargé sur la autre machine, en effet, du fait du nombre conséquent de petit fichiers, une dizaine de millier, l’ana‑lyze des mutations des fichiers était aussi fort longue, genre 20min (95.000 fichier en tout du fait de nos multiple dossier Symfony, « Bases », « Posts », « Posts‑end », « Posts‑User » et enfin « Projet »…
+                    </p>
+
+                    <p>Après avoir vérifié les prix pour un 1To chez Google et Microsoft, je me suis rendu compte que l’offre de Microsoft était 30€ moins cher et qu’en plus, il proposait Office 365, ce qui est très intéressant, j’ai donc décidé de souscire le 21 novembre 2018 à l’abonnemênt et de tout mettre dans OneDrive, mon ancien dossier « Mes Documênts » de 25Go sur le disque alternatif ( ce que je ne pouvais faiqe avant avec les 15Go de l’offre gratuite), les fichier déjà présent dans le « Mes Documênts » de OneDrive (qui consiste surtout n des sauvegarde de jeux ou fichier config des programmes Windows 10 et de les unifier avec ceux de Google Drive, pour ne plus du tous les utiliser et avoir tout sur un seul cloud sécurisé et historicisé…</p>
+
+                    <p>L’accomplisse‑mênt de cette tache ma pris quelque jour, car j’ai dû reconfigurer les chemins de WWW de W.A.M.P. sur mes deux machines, géré les différentes version de fichiers… Mais j’y suis parvenu, néanmoins par la suite, je fus dessus de constaté que le « File Version History » (versioning) présent dans Google Drive (10 dernière sauvegarde), pour tous les fichiers, n’est appliqué que pour les fichier Office dans OneDrive, ce qui est très ennoyant en cas de corruption de fichier ou erreur personnel dans son écriture et lors de la modification importante de contenu, et que l’on voudrait revenir en arrière, je dois de ailleurs contacté la page support de Microsoft pour connaitre la raison de cet absence de « File Version History » , que les
+                    <a href="https://www.microsoft.com/en-us/microsoft-365/blog/2017/07/19/expanding-onedrive-version-history-support-file-types/" target="_blank">développeurs de Microsoft avait pourtant annoncé pro tous les fichiers en 2017 !!!</a></p>
+
+                    <div style="text-align: center;">
+                        <img src="https://cloud.addictivetips.com/wp-content/uploads/2018/11/OD-version-history.jpg" alt="OneDrive Files Version History" title="OneDrive Files Version History" style="width: 720px;">
+                    </div>
+
+                    <br>
+
+                    <p>J’ai aussi lors de ce processus de transfert et unification de dossier et fichiers, déplacé mon dossier « BackUp », de RAR de disque et fichiers important vers OneDrive, l’ennui c’est que j’avais des doublons et à la suite de une erreur de manipulation de fichier semblable dans deux disque et dossier différent, j’ai effacé 5 fichier de un coup, et comme 2 était très volumineux, Windows me avertis que il ne peuvent être envoyé vers la « Recycle Bin » mais supprimé définitive‑mênt, je n’ai pas réfléchi et j’ai fait « Ok ». Le problème c’est que la suite de une mauvaise manipulation (clique sur le raccourcie de une fenêtre), j’avais en fait deux fois la même fenêtres contenant les deux même dossiers, côte à côte, ce qui fait que croyant effacé des doublons j’effaçais des fichiers semblable & identique et parfois unique… (J'ai de ailleur écrit à Microsoft sur « <a href="https://aka.ms/AA3gyj5" target="_blank">FeedBack Hub</a> » pro leur dire que la taille maximal de un fichier pro la corbeille doit‑être augmenter par défaut pour éviter ce soucis à l'avenir…)</p>
+
+                    <div style="text-align: center;">
+                        <a href="img/recycle_bin_default_size.png" target="_blank"><img src="img/recycle_bin_default_size.png" alt="Recycle Bin taille par défaut réassigné." title="Recycle Bin taille par défaut réassigné."></a>
+                    </div>
+
+                    <br>
+
+                    <p>Puis j’ai fait un autre archive RAR dans ce même dossier, quelque jour plus tard je me suis rendu compte que l’un des fichiers supprimé était le backup de ma clé U.S.B. que je comptais transféré sur une Clé sécurisé à code, j’ai tenté de les récupéré, et j’ai téléchargé :
+                    <p>
+                    <ul>
+                        <li>« PiriForm Recuva (totale‑mênt gratuit) »,</li>
+                        <li>« MiniTool Power Data Recovery »,</li>
+                        <li>« Stellar Data Recovery »,</li>
+                        <li>et finale‑mênt « R‑Studio N.T.F.S. »…</li>
+                    </ul>
+
+                    <p>Le problème, comme j’avais réécris un RAR dans ce même dossier, j’ai écrasé les clusters, donc je n’ai pas su les récupérer et MiniTool & Stellar faisait bien le scan qui prenait 7H, voir plus pour certains disque plus volumineux, mais à la fin, ils annonçaient que il fallait acheter le programme, pour récupérer des fichiers de plus de un méga ou plus, j’ai donc dû acheter MiniTool (89$) et R‑Studio (59,99$) le 21 & 22 novembre 2018, lancé de multi‑ple scan ap‑pro‑fondi pendant trois jours sur 3 disques I:\, M:\, V:\, pour découvrir finale‑mênt, que il était bien irrécupérable… J’ai perdu environs 140€ dans cette af‑faiqe ! Et pas mal de temps de travail et de étude sur les projets.</p>
+
+                    <p>Puis un jours, vers début décembre 2018, j’ai converti mon disque V:\ (Videos) de 2010, de MBR à GPT, lors du reboot le lendemain, il a commencé à faiqe un bruit de claque‑mênt, pro que le B.I.O.S. l’éteigne, puis que CrystalDiskInfo m’informe lorsque il accepta de démarré, que il y a un problème S.M.A.R.T. grâve, j’ai donc dû créer une archive RAR des tous ses fichiers et dossier, tant que il était encore fonctionnel et lisible, pour les transféré sur le G:\ en at‑tendant que j’achète un nouveau Toshiba P3000 2To. Cela me aussi coûté du temps.</p>
+
+                    <p>J’ai enfin dû regarder des vidéos nombreuse et longue, de tutoriel, et ce plusieurs fois, pour comprendre certaines fonctions non‑vue en classe de Symfony 4. Et elle était parfois mal‑faite ou totale‑mênt in‑utile.</p>
+
+                    <p>Voilà les causes de mon re‑tard, j’ai tenté de être le plus clair possible, j’espère que vous côm‑prê‑hêndrez et ne me en voudrez pas trop pour ce re‑tard, mais j’ai eu plein de contre‑temps et més‑aventure. La vie est parfois côm‑pliqué, pour nous tous…</p>
+                </section>
+
+                <hr class="my-4">
+
+                <section>
+                    <h5 class="h5">Remarque côn‑cernant le « <a href="files/2018-10-04_-_13H23_-_cahier-charges.pdf" target="_blank">Cahier de Charge</a> » :</h5>
+
+                    <p>Je tiens à vous dire, pro être franc et honnête avec vous, professeur Marthus, que je trouve assez para‑doxale, a‑norm‑al, in‑sênsé, ex‑cessif et il‑logique que vous ne de‑mandiez dans ce projet examen, de être capable de faiqe la gestion des notations, des com‑mêntaires, des utilisateurs, du transfert de image, et de leurs liaison et re‑lation (parfois unique‑double pour les notations et com‑mêntaires),
+                        <code>{@ORM\UniqueConstraint(name="notation", columns={"user_id", "product_id"})})</code> alors que nous n'avons pas vu le code en classe, et que le code final de « posts‑user » ne les mêntionnes point et pas plus votre
+                        <a href="2018-09-22_-_18H19_-_Symfony04.pdf" target="_blank">syllabus</a>, tout en nous cônseillant de chercher sur un internet, qui contient ef‑fective‑mênt beaucoup de in‑forma‑tion, mais il faut savoir faiqe le tri entre l'utile, le cor‑recte, l'in‑côm‑plet, le dé‑précié et le faux, et que la documêntation en ligne qui est plus n'est que en Anglais et que je côm‑prends, mais que il faut malgré tout trans‑laté et interprété, ce qui prend un temps notable et ra‑lenti le travail…<br>Je n'avais jamais vu & vécu cela de ma vie de étudiant au‑par‑avant…
+                    </p>
+
+                    <p>Je tiens à faiqe re‑marquer que la documêntation de Symfony et pro moi très, très mal faite (ce que signale aussi la chaîne
+                        <a href="https://www.youtube.com/watch?v=6Ryu7-VSV5k&feature=youtu.be&list=PLjwdMgw5TTLX7wmorGgfrqI9TcA8nMb29&t=612" target="_blank">GrafikArt dans son tutoriel Symfony 4</a>), ainsi que celle de TWIG, qui est encore plus réduite, les tutoriaux en ligne sont superficiel et toujours incomplet (<a href="https://www.youtube.com/watch?v=UTusmVpwJXo&list=PLpUhHhXoxrjdQLodxlHFY09_9XzqdPBW8" target="_blank">Lior Chamla</a>) si l'on tiens à faiqe des choses très détaillé et très spécifique, qui sont très simple en PHP, elle deviennent sur Symfony très côm‑plexe et un cauchemardesque, car les com‑mande sont cloisonné au Twig & à ce cadre de trawali (FrameWork), qui parfois n'a pas en‑visagé ces possibilité, je ne trouve aucune documêntation pour certains détails, par exemple, faiqe un ChoiceType avec affichage précis en Twig pro générer des options et value avec des liens… Les requêtes SQL simple ne sont plus ac‑cessible…
+                    </p>
+
+                    <p>Je re‑côn‑nais que le pro‑cédurales est très pratique et très simple et que l'orienté objet, que je ne maîtrise pas et que nous avons vu très briève‑mênt, est une dif‑ficulté sup‑plémêntaire surtout au niveau des in‑voca‑tion’s et des fonctions que je ne côn‑ʒnais pas en totalité tant celle de P.H.P. que de Symfony…</p>
+
+                    <p>Et surtout lors de l'in‑vocation d’informations d’un tableau en objet, car je n'ai pas trouvé nul part (Google, Bing) comme ré‑cupérer ce type de in‑forma‑tion pour faiqe par exemple le sum/count des notations in‑clus dans l’objet d’un tableau.</p>
+
+                    <p>La re‑cherche pour ce travail prend beaucoup et trop de temps, alors que si vous nous les avions vu en classe, ou reçu une version de votre syllabus les mêntionnant, cela aurait été plus simple et pratique, car nous avons aussi de autre cours ou sur lesquels nous devons aussi trawallié, sans parler du T.F.E., de la re‑cherche de un stage et de la vie quotidienne.</p>
+                    <p>Je côm‑prê‑hênds que ce soit des degrés de maîtrise, mais bon.
+                    <p>
+
+                    <p>Les in‑forma‑tions et codes que l'on trouve en ligne sont souvent sortis de leurs côn‑textes, les codes pré‑cèdent ou postérieur, les « use » et « namespace » à utiliser sont souvent absent (stackoverflow.com), les noms des variables dif‑férent (et il font donc ce plongé dans le code pro côm‑pre‑hendre ce que ils veulent dire et faiqe),<br>encore du temps gaché, et les exemples de code du site Symfony ne disent pas, si il s'agit de un côn‑trôleur, formulaire, de une entité, on doit le déduire, c'est un gashis de temps énorme…</p>
+
+                    <p>Je ne aime pas ce Vrame‑Vorg, car il nécessite pour at‑teindre des ré‑sultat probant une côn‑naissance total et parfaite, que le on ne peut ob‑tenir en une dizaine de jour de cours… Comme je n'aime pas non plus les FrameWork C.S.S. et surtout BootStrap, car il a ê‑té fait par l'équipe de Twitter, ce que j'ai ap‑pris récemmênt, et que j'ai toujours trouvé que Twitter avait une inter‑face trop sim‑pliste, dépouillé et légère et ce depuis mon in‑scription en décembre 2015.<br>Ce que je re‑proche à ces FrameWork C.S.S. ce que il n'utilise pas les Tag sémantique du 5, tels &lt;section&gt;, &lt;main&gt;, &lt;footer&gt;, &lt;header&gt; de office, et que par exemple « Semantic UI » utilise des div plutôt que des &lt;select>, &lt;option&gt; ou autres tags…</p>
+
+                    <p>Que il rende tous les sites similaires et manque ainsi de originalité graphique et artistique, à contrario de la glorieuse époque des années 2004 ou chaque site était réelle‑mênt unique et dé‑signé, en Flash et très esthétique.<br>Je pense que avoir son propre C.S.S. et son propre style et im‑portant dans un projet à long terme et une preuve de originalité, de caractère, de personnalité et singularité.<br>C'est pour cela que je n'aime les FrameWork, car ils cloisonnent les gens à un format précis et une syn‑taxe pré‑cise qui facilite le travail des hackers et crackers, puisque si vous utiliser ce FrameWork, tout vote Entity (table) ou Fields (champs) seront standardisé…</p>
+
+                    <p>Je ne côm‑pre‑hênds pas pourquoi personne n'a jamais fait un pro‑jet « Layer » pour trans‑coder automatique‑mênt dans les deux sens les langages de prog‑ramma‑tion dans nos langues national, plutôt que de nous obliger à tout écrire en Anglais, ce qui est ennuyant et ardu…</p>
+
+                    <p>Symfony « Twig » oblige à utiliser les moustaches là où le « P.H.P. » serait parfois plus pratique, en un sens je pense que « Larawêl » à raison de utiliser le langage « BLADE » qui permet de utiliser aussi du PHP…</p>
+
+                    <p>Au premier abord, Symfony semble accélérer le process de création, mais par la suite, il le ralenti car les re‑cherche des in‑forma‑tions pour arriver à ces fins spéci‑fique, prend un temps côn‑sidérable, ce n'est donc pas très utile sur le long terme, à moins de le côn‑naitre parfaite‑mênt et n'utiliser que cette technique…</p>
+
+                    <p>C'est tout ce que j'ai à dire à ce sub‑jet, côn‑clusion, j’aime pas vrai‑mênt Symfony, sans pourtant le dé‑tester, même cela peut changer si je le masterise, et je me en vais tester Larawêl pour mon T.F.E., si j'ai la chance de devoir le rendre, si je réussi :</p>
+
+                        <ul>
+                        <li>P.O.O. & Symfony,</li>
+                        <li>M.V.C.,</li>
+                        <li>JavaScript / jQuery / A.J.A.X.…</li>
+                        </ul>
+                    <p>Ce qui ne est pas simple ! Ni couru de avance.</p>
+
+                </section>
+            </div>
+
+        </div>
+
+
+    </article>
+
+{% endblock %}

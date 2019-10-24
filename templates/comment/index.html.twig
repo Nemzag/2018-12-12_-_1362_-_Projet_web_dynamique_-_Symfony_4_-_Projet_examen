@@ -1,0 +1,156 @@
+{#
+* Created by PhpStorm.
+* User: nemzag aka Gazmen Arifi.
+* Date: 2018-12-10
+* Time: 14:09
+#}
+
+{% extends 'default.html.twig' %}
+
+{% block title %}Liste de's commêntaire's{% endblock %}
+
+{% block main %}
+
+    <br>
+
+    <h1>Liste de's commêntaire's :</h1>
+
+    <hr class="my-4">
+
+    <a href="{{ path('home' ) }} " class="btn btn-primary col text-left text-white"><i class="far fa-eye"></i><b> Re‑venir à l'accueil</b></a>
+
+    <br><br>
+
+    {% for message in app.flashes('comment_success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('comment_danger') %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <table class="table table-hover table-bordered" style="width: 100%;margin-left: auto; margin-right: auto;">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Image :</th>
+
+                <th scope="col" style="width: 180px;">Utilisateur :</th>
+
+                <th scope="col">Notation :</th>
+
+                <th scope="col">Com‑mêntaire</th>
+
+                <th style="width: 180px;">Date du com‑mêntaire</th>
+
+                {% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN') or is_granted('ROLE_CONTRIBUTOR') %}
+
+                <th style="width: 180px;">Modi‑fica‑tion's :</th>
+
+                {% endif %}
+
+				{#
+                {% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_USER') or is_granted('ROLE_MODERATOR') %}
+
+                    <th style="width: 180px;">Modi‑fica‑tion's :</th>
+
+                {% endif %}
+				#}
+
+                <th>Id :</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for comment in comments %}
+
+            <tr>
+
+                <td>
+                    <a href="{{ path('user_show', {'id': app.user.id}) }}"><img src="{{ asset('img/users/') ~ comment.user.image }}" alt="Image de {{ comment.user.username }}"></a>
+                </td>
+
+                <td><a href="{{ path('user_show', {'id': comment.user.id}) }}"><i class="far fa-eye"></i><strong> {{ comment.user.username }}</strong></a></td>
+
+                <td class="product-notation" scope="row" style="white-space: nowrap;">
+
+                    <!--
+                      5 text-primary (blue)
+                      4 text-success (green)
+                      3 text-secondary (gray)
+                      2 text-warning (yellow)
+                      1 text-danger (red)
+                      0 text-dark (black)
+                      -->
+
+                    <!-- Si 5 points -->
+                    {% if notations == 5 %}
+                        <span title="5 points"><i class="text-primary fas fa-star"></i><i class="text-primary fas fa-star"></i><i class="text-primary fas fa-star"></i><i class="text-primary fas fa-star"></i><i class="text-primary fas fa-star"></i> </span>
+                    {% endif %}
+
+                    <!-- Si 4 points -->
+                    {% if notations == 4 %}
+                        <span title="4 points"><i class="text-info fas fa-star"></i><i class="text-info fas fa-star"></i><i class="text-info fas fa-star"></i><i class="text-info fas fa-star"></i><i class="text-info far fa-star"></i></span>
+                    {% endif %}
+
+                    <!-- Si 3 points -->
+                    {% if notations == 3 %}
+                        <span title="3 points"><i class="text-success fas fa-star"></i><i class="text-success fas fa-star"></i><i class="text-success fas fa-star"></i><i class="text-success far fa-star"></i><i class="text-success far fa-star"></i></span>
+                    {% endif %}
+
+                    <!-- Si 2 points -->
+                    {% if notations == 2 %}
+                        <span title="2 points"><i class="text-warning fas fa-star"></i><i class="text-warning fas fa-star"></i><i class="text-warning far fa-star"></i><i class="text-warning far fa-star"></i><i class="text-warning far fa-star"></i></span>
+                    {% endif %}
+
+                    <!-- Si 1 points -->
+                    {% if notations == 1 %}
+                        <span title="1 points"><i class="text-danger fas fa-star"></i><i class="text-danger far fa-star"></i><i class="text-danger far fa-star"></i><i class="text-danger far fa-star"></i><i class="text-danger far fa-star"></i></span>
+                    {% endif %}
+
+                    <!-- Si 0 points -->
+                    {% if notations == 0 %}
+                        <span title="0 points"><i class="text-dark far fa-star"></i><i class="text-dark far fa-star"></i><i class="text-dark far fa-star"></i><i class="text-dark far fa-star"></i><i class="text-dark far fa-star"></i></span>
+                    {% endif %}
+                </td>
+
+                <td title="comment">{{ comment.comment }}</td>
+
+                <td>{{ comment.dateAdded ? comment.dateAdded|date('Y-m-d H:i:s') : '' }}</td>
+
+                {% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN') or is_granted('ROLE_CONTRIBUTOR') %}
+
+                    <td>
+                        <a href="{{ path('comment_edit', {'id': comment.id}) }}"><i class="fas fa-edit"></i> Éditer</a>
+                    </td>
+
+                {% endif %}
+
+                {% if is_granted('ROLE_USER') or is_granted('ROLE_MODERATOR') %}
+
+                    <td>
+                        <a href="{{ path('comment_edit', {'id': comment.id}) }}"><i class="fas fa-edit"></i> Éditer</a>
+                    </td>
+
+                {% endif %}
+
+
+                <td>{{ comment.id }}</td>
+
+            </tr>
+
+        {% else %}
+
+            <tr>
+                <td colspan="{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN') or is_granted('ROLE_MODERATOR') %}{{7}}{{ else }}{{ 6 }}{% endif %}">Pas de en‑registre‑mênt trouvé.</td>
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+{% endblock %}

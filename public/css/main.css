@@ -1,0 +1,48 @@
+/**
+ * Created by PhpStorm.
+ * User: Nemzag aka Gazmen Arifi (Shkypi, 1979-09-30).
+ * Date: 2018-11-28
+ * Time: 19:39
+ */
+
+header {
+    height: 350px;
+    background: url("../img/ban.png") no-repeat center center;
+    /* background-repeat background-position */
+    background-size: cover;
+}
+
+.indent p {
+	text-indent: 3em;
+}
+
+.table thead th {
+    vertical-align: baseline;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.table img {
+    width: 125px;
+}
+
+.product-name {
+    white-space: normal;
+}
+
+.product-category,
+.product-price {
+    white-space: nowrap;
+}
+
+.product-description {
+    width: 400px;
+}
+
+.product-price {
+    text-align: right;
+}
+
+.stella:hover i {
+    background-color: yellow;
+}

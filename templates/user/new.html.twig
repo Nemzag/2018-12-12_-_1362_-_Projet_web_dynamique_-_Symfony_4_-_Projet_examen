@@ -1,0 +1,141 @@
+{#
+ * Created by PhpStorm.
+ * User: Nemzag aka Gazmen Arifi (Shkypi, 1979-09-30).
+ * Date: 2018-12-03
+ * Time: 09:36
+#}
+
+{% extends 'default.html.twig' %}
+
+{% block title %}Ajouter un nouwêlle utilisateur{% endblock %}
+
+{% block main %}
+
+    <section>
+        <br>
+
+        <h1 class="h1">Ajouter un nouwêlle utilisateur :</h1>
+
+        <hr class="my-4">
+
+        {% for message in app.flashes('user_success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% for message in app.flashes('user_danger') %}
+            <div class="alert alert-danger">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        <a href="{{ path('user_index') }}" class="btn btn-primary col-sm text-left text-white"><i class="far fa-eye"></i><b> Re‑venir à la liste des utilisateurs</b></a>
+
+        <br><br>
+
+        <div class="row">
+
+            <div class="col">
+
+                {{ form_start(form) }}
+
+                <div class="form-group">
+                    <h2 class="h6">{{ form_label(form.first_name) }}</h2>
+                    {{ form_widget(form.first_name) }}
+                </div>
+
+                <div class="form-group">
+                    <h2 class="h6">{{ form_label(form.last_name) }}</h2>
+                    {{ form_widget(form.last_name) }}
+                </div>
+
+                <div class="form-group">
+                    <h2 class="h6">{{ form_label(form.username) }}</h2>
+                    {{ form_widget(form.username) }}
+                </div>
+
+                <div class="form-group">
+                    <h2 class="h6">{{ form_label(form.email) }}</h2>
+                    {{ form_widget(form.email) }}
+                </div>
+
+                <div class="form-group">
+                    <h2 class="h6">{{ form_label(form.password) }}</h2>
+                    {{ form_widget(form.password) }}
+                </div>
+
+                <div class="form-group">
+                    <h2 class="h6">{{ form_label(form.confirmPassword) }}</h2>
+                    {{ form_widget(form.confirmPassword) }}
+                </div>
+
+                <div class="form-group">
+                    <h2 class="h6">{{ form_label(form.birth_day) }}</h2>
+                    {{ form_widget(form.birth_day) }}
+                </div>
+
+                <div class="form-group">
+                    <h2 class="h6">{{ form_label(form.presentation) }}</h2>
+                    {{ form_widget(form.presentation) }}
+                </div>
+
+                <div class="form-group">
+                    <h2 class="h6">{{ form_label(form.inscription_date) }}</h2>
+                    {{ form_widget(form.inscription_date) }}
+                </div>
+
+                <div class="form-group">
+                    <h2 class="h6">{{ "Inséré une image :" }}</h2>
+                    {{ form_widget(form.image) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_widget(form.roles,
+                        {
+                            'attr': {
+                            'hidden' : true,
+
+                            }
+                        })
+                    }}
+                </div>
+
+                <div class="form-group">
+
+                    {% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN') %}
+
+                        <h2 class="h6">{{ form_label(form.roles) }}</h2>
+                        {{ form_widget(form.roles) }}
+
+                    {% else %}
+
+                        {{ form_widget(form.roles, {
+                            'attr' : {
+                                'readonly' : true,
+                                'hidden' : true,
+                            }
+                        }) }}
+
+                    {% endif %}
+
+                </div>
+
+                {# {{ form_widget(form.submit, {'label': 'Envoyez', 'attr' : {
+                     'class' : 'text-left col',
+                     } }) }}#}
+
+                <hr class="my-4">
+
+                <button class="btn btn-warning col text-left text-white">
+                    <i class="fas fa-share-square"></i><b> {{ button_label|default(' Sauve‑gardez la modi‑fica‑tion') }}</b></button>
+
+                <br>
+                <br>
+
+                {{ form_end(form) }}
+
+            </div>
+
+        </div>
+    </section>
+{% endblock %}

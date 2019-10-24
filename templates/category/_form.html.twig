@@ -1,0 +1,16 @@
+{#
+   * Created by PhpStorm.
+   * User: Nemzag aka Gazmen Arifi (Shkypi, 1979-09-30).
+   * Date: 2018-12-09
+   * Time: 20:55
+#}
+
+{{ form_start(form) }}
+
+    {{ form_widget(form.categories, {'label': 'Catégorie'}) }}
+
+<hr class="my-4">
+
+<button class="btn btn-warning col text-left text-white"><i class="fas fa-share-square"></i><b> {{ button_label|default(' Sauve‑gardez la modi‑fica‑tion') }}</b></button>
+
+{{ form_end(form) }}

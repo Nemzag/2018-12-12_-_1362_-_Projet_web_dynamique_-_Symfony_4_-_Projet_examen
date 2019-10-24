@@ -1,0 +1,40 @@
+{#
+   * Created by PhpStorm.
+   * User: Nemzag aka Gazmen Arifi (Shkypi, 1979-09-30).
+   * Date: 2018-12-09
+   * Time: 20:55
+#}
+
+{% extends 'default.html.twig' %}
+
+{% block title %}Nouwêlle Catégorie{% endblock %}
+
+{% block main %}
+
+    <br>
+
+    <h1>Ajouter une nouwêlle Catégorie</h1>
+
+    <hr class="my-4">
+
+    {% for message in app.flashes('category_success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('category_danger') %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <a href="{{ path('category_index') }}" class="btn btn-primary col-sm text-left text-white"><i class="far fa-eye"></i><b> Re‑venir à la liste des Catégories</b></a>
+
+    <br><br>
+
+    {{ include('category/_form.html.twig', {'button_label': ' Sauve‑gardez la modi‑fica‑tion'}) }}
+
+    <br>
+
+
+{% endblock %}
