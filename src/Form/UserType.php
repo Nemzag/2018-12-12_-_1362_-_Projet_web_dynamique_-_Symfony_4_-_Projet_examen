@@ -31,15 +31,30 @@ class UserType extends AbstractType
     {
         $builder
 
-	        ->add('username', TextType::class, ['label' => "Choisissez votre pseudonyme :"])
+	        ->add('username', TextType::class, [
 
-	        ->add('email', EmailType::class, ['label' => "Insérez votre email (valide) :"])
+	        	'label' => "Choisissez votre pseudonyme :"
+	        ])
 
-	        ->add('password', PasswordType::class, ['label' => "Insérez votre mot de passe :"])
+	        ->add('email', EmailType::class, [
 
-	        ->add('confirmPassword', PasswordType::class, ['label' => "Confirmer votre mot de passe :"])
+	        	'label' => "Insérez votre email (valide) :"
+	        ])
 
-	        ->add('first_name', TextType::class, ['label' => "Votre prénom :"])
+	        ->add('password', PasswordType::class, [
+
+	        	'label' => "Insérez votre mot de passe :"
+	        ])
+
+	        ->add('confirmPassword', PasswordType::class, [
+
+	        	'label' => "Confirmer votre mot de passe :"
+	        ])
+
+	        ->add('first_name', TextType::class, [
+
+	        	'label' => "Votre prénom :"
+	        ])
 
 	        ->add('last_name', TextType::class, ['label' => "Votre nom :"])
 
@@ -47,9 +62,22 @@ class UserType extends AbstractType
 
 	        ->add('presentation', TextareaType::class, ['label' => "Présentez‑vous briève‑mênt :"])
 
+	        ->add('role', ChoiceType::class, [
+
+		        'label' => 'Rôle',
+
+		        'multiple' => true,
+		        'choices' => [
+			        'Utilisateur' => 'ROLE_USER',
+			        'Modérateur' => 'ROLE_MODERATOR',
+			        'Contributeur' => 'ROLE_CONTRIBUTOR',
+			        'Administrateur' => 'ROLE_ADMIN'
+		        ]
+	        ])
+
+	        /*
 	        ->add('roles', ChoiceType::class, [
 
-			        /*
 					'choices' => [
 						'Utilisateur' => 5,
 						'Modérateur' => 4,
@@ -58,13 +86,14 @@ class UserType extends AbstractType
 						'Super‑Administrateur' => 1,
 						],
 					'preferred_choices' => ['Utilisateur' => 5],
-						*/
 
 			        // Methode GrafikArt.fr
 	        	'choices' => $this->getChoices(),
 				        'preferred_choices' => ['Utilisateur' => 5],
 	            ]
+
 	        ) // Voir la doc et ajouté de paramètre
+            */
 
 	        ->add('inscription_date', DateType::class, [
 
@@ -93,6 +122,7 @@ class UserType extends AbstractType
         ]);
     }
 
+    /*
 	// Methode de GrafikArt.fr
     private function getChoices() {
 
@@ -103,4 +133,5 @@ class UserType extends AbstractType
 	    }
     	return $output;
     }
+    */
 }

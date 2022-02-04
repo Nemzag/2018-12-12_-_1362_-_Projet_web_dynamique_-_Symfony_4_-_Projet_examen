@@ -19,6 +19,13 @@ class Product
      */
     private $id;
 
+	public function getId(): ?int
+	{
+		return $this->id;
+	}
+
+	//====================================================================================
+
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(
@@ -29,6 +36,20 @@ class Product
      * )
      */
     private $name;
+
+	public function getName(): ?string
+	{
+		return $this->name;
+	}
+
+	public function setName(string $name): self
+	{
+		$this->name = $name;
+
+		return $this;
+	}
+
+	//====================================================================================
 
     // *     pattern = "/^(\d*\.)?\d{2}+$/",
     /**
@@ -45,10 +66,38 @@ class Product
      */
     private $price;
 
+	public function getPrice(): ?float
+	{
+		return $this->price;
+	}
+
+	public function setPrice(float $price): self
+	{
+		$this->price = $price;
+
+		return $this;
+	}
+
+	//====================================================================================
+
     /**
      * @ORM\Column(type="text")
      */
     private $description;
+
+	public function getDescription(): ?string
+	{
+		return $this->description;
+	}
+
+	public function setDescription(string $description): self
+	{
+		$this->description = $description;
+
+		return $this;
+	}
+
+	//====================================================================================
 
     /**
      * @ORM\Column(type="smallint")
@@ -106,10 +155,31 @@ class Product
      */
     private $url;
 
+    // ────────────────────────────────────────────────────────────────────────
+
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Notation", mappedBy="product", cascade={"persist", "remove"})
      */
     private $notation;
+
+	public function getNotation(): ?Notation
+	{
+		return $this->notation;
+	}
+
+	public function setNotation(Notation $notation): self
+	{
+		$this->notation = $notation;
+
+		// set the owning side of the relation if necessary
+		if ($this !== $notation->getProduct()) {
+			$notation->setProduct($this);
+		}
+
+		return $this;
+	}
+
+	// ────────────────────────────────────────────────────────────────────────
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="product")
@@ -121,46 +191,36 @@ class Product
         $this->comments = new ArrayCollection();
     }
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+	/**
+	 * @return Collection|Comment[]
+	 */
+	public function getComments(): Collection
+	{
+		return $this->comments;
+	}
 
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
+	public function addComment(Comment $comment): self
+	{
+		if (!$this->comments->contains($comment)) {
+			$this->comments[] = $comment;
+			$comment->setProduct($this);
+		}
 
-    public function setName(string $name): self
-    {
-        $this->name = $name;
+		return $this;
+	}
 
-        return $this;
-    }
+	public function removeComment(Comment $comment): self
+	{
+		if ($this->comments->contains($comment)) {
+			$this->comments->removeElement($comment);
+			// set the owning side to null (unless already changed)
+			if ($comment->getProduct() === $this) {
+				$comment->setProduct(null);
+			}
+		}
 
-    public function getPrice(): ?float
-    {
-        return $this->price;
-    }
-
-    public function setPrice(float $price): self
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(string $description): self
-    {
-        $this->description = $description;
-
-        return $this;
-    }
+		return $this;
+	}
 
     public function getPromotion(): ?int
     {
@@ -235,51 +295,4 @@ class Product
         return $this;
     }
 
-    public function getNotation(): ?Notation
-    {
-        return $this->notation;
-    }
-
-    public function setNotation(Notation $notation): self
-    {
-        $this->notation = $notation;
-
-        // set the owning side of the relation if necessary
-        if ($this !== $notation->getProduct()) {
-            $notation->setProduct($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Comment[]
-     */
-    public function getComments(): Collection
-    {
-        return $this->comments;
-    }
-
-    public function addComment(Comment $comment): self
-    {
-        if (!$this->comments->contains($comment)) {
-            $this->comments[] = $comment;
-            $comment->setProduct($this);
-        }
-
-        return $this;
-    }
-
-    public function removeComment(Comment $comment): self
-    {
-        if ($this->comments->contains($comment)) {
-            $this->comments->removeElement($comment);
-            // set the owning side to null (unless already changed)
-            if ($comment->getProduct() === $this) {
-                $comment->setProduct(null);
-            }
-        }
-
-        return $this;
-    }
 }

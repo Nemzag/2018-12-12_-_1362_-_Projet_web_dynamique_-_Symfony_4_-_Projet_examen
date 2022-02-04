@@ -104,8 +104,8 @@
 
                     {% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN') %}
 
-                        <h2 class="h6">{{ form_label(form.roles) }}</h2>
-                        {{ form_widget(form.roles) }}
+                        <h2 class="h6">{{ form_label(form.role) }}</h2>
+                        {{ form_widget(form.role) }}
 
                     {% else %}
 

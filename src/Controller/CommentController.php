@@ -15,6 +15,10 @@ use App\Form\CommentType;
 
 use App\Repository\CommentRepository;
 
+use App\Repository\NotationRepository;
+use App\Repository\ProductRepository;
+use Exception;
+use PhpParser\Node\Expr\Array_;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -42,9 +46,14 @@ class CommentController extends AbstractController
 	{
 		$this->denyAccessUnlessGranted(["ROLE_ADMIN", "ROLE_SUPER_ADMIN", "ROLE_MODERATOR"]);
 
+		// $comments = $commentRepository->findAll();
+		$comments = $commentRepository->findCommentsNotations();
+
+		// $productId = $productRepository->findBy(['product' => $commentId->getProduct()]);
+
 		return $this->render('comment/index.html.twig', [
-			'comments' => $commentRepository->findAll(),
-			'notations' => 5,
+			'comments' => $comments,
+			// 'notations' => '5',
 		]);
 	}
 
@@ -86,11 +95,14 @@ class CommentController extends AbstractController
 		}
 	}
 
+	//=======================================================================================
+
 	/**
 	 * @Route("/new", name="comment_new", methods="GET|POST")
 	 * @param Request $request
+	 * @param ProductRepository $productRepository
 	 * @return Response
-	 * @throws \Exception
+	 * @throws Exception
 	 */
 	public function new(Request $request): Response
 	{
@@ -134,6 +146,8 @@ class CommentController extends AbstractController
 			'form' => $form->createView(),
 		]);
 	}
+
+	//=======================================================================================
 
 	/**
 	 * @Route("/{id}/show", name="comment_show", methods="GET")

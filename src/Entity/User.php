@@ -4,12 +4,16 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+
 use Doctrine\ORM\Mapping as ORM;
 use phpDocumentor\Reflection\Types\Void_;
+
 use Serializable;
+
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -24,6 +28,12 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class User implements UserInterface, Serializable // Pour que l'utilisateur soit sauvegardé au niveau de la session.
 {
+	public function __toString()
+	{
+		return $this->username;
+	}
+
+	/*
 	const ROLES = [
 		5 => 'Utilisateur',
 		4 => 'Modérateur',
@@ -31,6 +41,7 @@ class User implements UserInterface, Serializable // Pour que l'utilisateur soit
 		2 => 'Administrateur',
 		1 => 'Super‑Administrateur',
 		];
+	*/
 
 	/**
 	 * @ORM\Id()
@@ -38,6 +49,13 @@ class User implements UserInterface, Serializable // Pour que l'utilisateur soit
 	 * @ORM\Column(type="integer")
 	 */
 	private $id;
+
+	public function getId(): ?int
+	{
+		return $this->id;
+	}
+
+	//==============================================================================
 
 	/**
 	 * @ORM\Column(type="string", length=255)
@@ -118,10 +136,14 @@ class User implements UserInterface, Serializable // Pour que l'utilisateur soit
 	 */
 	private $birth_day;
 
+	//==============================================================================
+
 	/**
 	 * @ORM\Column(type="text", nullable=true)
 	 */
 	private $presentation;
+
+	//==============================================================================
 
 	/**
 	 * @ORM\Column(type="datetime")
@@ -149,16 +171,92 @@ class User implements UserInterface, Serializable // Pour que l'utilisateur soit
 	 */
 	private $image;
 
+	//==============================================================================
+
 	/**
-	 * @ORM\Column(type="integer", nullable=false)
-	 *
+	 * @ORM\Column(type="json")
 	 */
-	private $roles;
+	private $role = [];
+
+	/**
+	 * Returns the roles granted to the user.
+	 *
+	 *     public function getRoles()
+	 *     {
+	 *         return array('ROLE_USER');
+	 *     }
+	 *
+	 * Alternatively, the roles might be stored on a ``roles`` property,
+	 * and populated in any number of different ways when the user object
+	 * is created.
+	 *
+	 * @return array (Role|integer)[] The user roles
+	 */
+	public function getRoles() /* : ?int : à mettre une fois le switch fait… */
+	{
+		// TODO: Implement getRoles() method.
+		return $this->role;
+
+		/*
+		$i = $this->roles;
+
+		switch ($i) {
+			case 1:
+				return ['ROLE_SUPER_ADMIN'];
+				break;
+			case 2:
+				return ['ROLE_ADMIN'];
+				break;
+			case 3:
+				return ['ROLE_CONTRIBUTOR'];
+				break;
+			case 4:
+				return ['ROLE_MODERATOR'];
+				break;
+			case 5:
+				return ['ROLE_USER'];
+				break;
+		}
+		*/
+	}
+
+	public function getRole(): ?array
+	{
+		return $this->role;
+	}
+
+	public function setRole(array $role): self
+	{
+		$this->role = $role;
+
+		return $this;
+	}
+
+	//==============================================================================
 
 	/**
 	 * @ORM\OneToMany(targetEntity="App\Entity\Notation", mappedBy="user", cascade={"persist", "remove"})
 	 */
 	private $notation;
+
+	public function getNotation(): ?Notation
+	{
+		return $this->notation;
+	}
+
+	public function setNotation(Notation $notation): self
+	{
+		$this->notation = $notation;
+
+		// set the owning side of the relation if necessary
+		if ($this !== $notation->getUser()) {
+			$notation->setUser($this);
+		}
+
+		return $this;
+	}
+
+	//==============================================================================
 
 	/**
 	 * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="user")
@@ -170,10 +268,39 @@ class User implements UserInterface, Serializable // Pour que l'utilisateur soit
 		$this->comments = new ArrayCollection();
 	}
 
-	public function getId(): ?int
+	/**
+	 * @return Collection|Comment[]
+	 */
+	public function getComments(): Collection
 	{
-		return $this->id;
+		return $this->comments;
 	}
+
+	public function addComment(Comment $comment): self
+	{
+		if (!$this->comments->contains($comment)) {
+			$this->comments[] = $comment;
+			$comment->setUser($this);
+		}
+
+		return $this;
+	}
+
+	public function removeComment(Comment $comment): self
+	{
+		if ($this->comments->contains($comment)) {
+			$this->comments->removeElement($comment);
+			// set the owning side to null (unless already changed)
+			if ($comment->getUser() === $this) {
+				$comment->setUser(null);
+			}
+		}
+
+		return $this;
+	}
+
+	//==============================================================================
+
 
 	public function getUsername(): ?string
 	{
@@ -301,52 +428,6 @@ class User implements UserInterface, Serializable // Pour que l'utilisateur soit
 	}
 
 	/**
-	 * Returns the roles granted to the user.
-	 *
-	 *     public function getRoles()
-	 *     {
-	 *         return array('ROLE_USER');
-	 *     }
-	 *
-	 * Alternatively, the roles might be stored on a ``roles`` property,
-	 * and populated in any number of different ways when the user object
-	 * is created.
-	 *
-	 * @return array (Role|integer)[] The user roles
-	 */
-	public function getRoles() /* : ?int : à mettre une fois le switch fait… */
-	{
-		// TODO: Implement getRoles() method.
-
-		$i = $this->roles;
-
-		switch ($i) {
-			case 1:
-				return ['ROLE_SUPER_ADMIN'];
-				break;
-			case 2:
-				return ['ROLE_ADMIN'];
-				break;
-			case 3:
-				return ['ROLE_CONTRIBUTOR'];
-				break;
-			case 4:
-				return ['ROLE_MODERATOR'];
-				break;
-			case 5:
-				return ['ROLE_USER'];
-				break;
-		}
-	}
-
-	public function setRoles(?int $roles): self
-	{
-		$this->roles = $roles;
-
-		return $this;
-	}
-
-	/**
 	 * Returns the salt that was originally used to encode the password.
 	 *
 	 * This can return null if the password was not encoded using a salt.
@@ -376,53 +457,9 @@ class User implements UserInterface, Serializable // Pour que l'utilisateur soit
 		// TODO: Implement eraseCredentials() method.
 	}
 
-	public function getNotation(): ?Notation
-	{
-		return $this->notation;
-	}
 
-	public function setNotation(Notation $notation): self
-	{
-		$this->notation = $notation;
 
-		// set the owning side of the relation if necessary
-		if ($this !== $notation->getUser()) {
-			$notation->setUser($this);
-		}
 
-		return $this;
-	}
-
-	/**
-	 * @return Collection|Comment[]
-	 */
-	public function getComments(): Collection
-	{
-		return $this->comments;
-	}
-
-	public function addComment(Comment $comment): self
-	{
-		if (!$this->comments->contains($comment)) {
-			$this->comments[] = $comment;
-			$comment->setUser($this);
-		}
-
-		return $this;
-	}
-
-	public function removeComment(Comment $comment): self
-	{
-		if ($this->comments->contains($comment)) {
-			$this->comments->removeElement($comment);
-			// set the owning side to null (unless already changed)
-			if ($comment->getUser() === $this) {
-				$comment->setUser(null);
-			}
-		}
-
-		return $this;
-	}
 
 	/**
 	 * String representation of object
@@ -443,7 +480,7 @@ class User implements UserInterface, Serializable // Pour que l'utilisateur soit
 			$this->presentation,
 			$this->inscription_date,
 			$this->image,
-			$this->roles,
+			$this->role,
 		]);
 	}
 

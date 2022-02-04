@@ -2,9 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="49c4d3fa-c141-4d8c-8914-c74bdfd4dad5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/composerJson.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace-Arifi-Gaz-PCB.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dump/projet_symfony_-_backup_of_2020-01-12.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e1db84c3-027a-4d20-b68d-de43d6be0099.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e1db84c3-027a-4d20-b68d-de43d6be0099/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/projet.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/projet.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dump/projet_symfony_-_backup_of_2018-12-13.sql" beforeDir="false" afterPath="$PROJECT_DIR$/dump/projet_symfony_-_backup_of_2018-12-13.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/files/2018-09-22_-_18H19_-_Symfony04.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/files/2018-10-04_-_13H23_-_cahier-charges.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CommentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CommentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Comment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ProductType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ProductType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/UserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/UserType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/CommentRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/CommentRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/comment/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/comment/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/user_profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/user_profile.html.twig" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,18 +59,46 @@
     <expand>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="projet@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="2018_symfony_projet_examen@localhost" type="feb32156:DbDataSourceImpl" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="projet@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="2018_symfony_projet_examen@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="projet@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="2018_symfony_projet_examen@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="projet: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="2018_symfony_projet_examen: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="2018_symfony_projet_examen@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="2018_symfony_projet_examen: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="comment: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="2018_symfony_projet_examen@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="2018_symfony_projet_examen: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="notation: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="2018_symfony_projet_examen@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="2018_symfony_projet_examen: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="product: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="2018_symfony_projet_examen@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="2018_symfony_projet_examen: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="user: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -174,32 +231,38 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1SLKpIJOPc4C1XrZYAYwtWtp4Xv" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/GoogleDrive/www/2019-2020_-_Symfony4/2019-09-26_-_web-articles" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../Dic/dict-fr/fr.dic" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.spelling" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
+  <component name="ServiceViewManager">
+    <option name="viewStates">
       <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
       </list>
     </option>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" Folders="1" Folder0="I:\Users\nemza\OneDrive\Dic\dict-fr" CustomDictionaries="1" CustomDictionary0="I:\Users\nemza\OneDrive\Dic\dict-fr\fr.dic" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="project-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="1" Folder0="V:\Users\nemza\OneDrive\Dic\dict-fr" CustomDictionaries="1" CustomDictionary0="V:\Users\nemza\OneDrive\Dic\dict-fr\fr.dic" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="project-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -221,24 +284,98 @@
       <workItem from="1547637566348" duration="752000" />
       <workItem from="1547724857093" duration="3241000" />
       <workItem from="1571337622112" duration="80000" />
-      <workItem from="1571690297230" duration="86000" />
-      <workItem from="1571903058020" duration="543000" />
+      <workItem from="1575507182676" duration="1438000" />
+      <workItem from="1575538475608" duration="1882000" />
+      <workItem from="1575549511978" duration="2346000" />
+      <workItem from="1575553950481" duration="652000" />
+      <workItem from="1575572126241" duration="12000" />
+      <workItem from="1575619430173" duration="2114000" />
+      <workItem from="1575638267954" duration="2399000" />
+      <workItem from="1575641036941" duration="692000" />
+      <workItem from="1575965555976" duration="629000" />
+      <workItem from="1577564709202" duration="3880000" />
+      <workItem from="1577571698318" duration="949000" />
+      <workItem from="1577577563798" duration="11000" />
+      <workItem from="1577638425083" duration="8014000" />
+      <workItem from="1577731390275" duration="2238000" />
+      <workItem from="1577745866443" duration="2606000" />
+      <workItem from="1577785873321" duration="4445000" />
+      <workItem from="1577917060528" duration="1427000" />
+      <workItem from="1577977895434" duration="3798000" />
+      <workItem from="1578001272008" duration="8000" />
+      <workItem from="1578086859617" duration="3540000" />
+      <workItem from="1578136080969" duration="4774000" />
+      <workItem from="1578232240145" duration="325000" />
+      <workItem from="1578263203281" duration="14000" />
+      <workItem from="1578346672010" duration="106000" />
+      <workItem from="1578429223933" duration="3090000" />
+      <workItem from="1578488996157" duration="2265000" />
+      <workItem from="1578577633429" duration="4469000" />
+      <workItem from="1578682174067" duration="561000" />
+      <workItem from="1578775336698" duration="8779000" />
+      <workItem from="1578788001772" duration="4479000" />
+      <workItem from="1578792912358" duration="3421000" />
+      <workItem from="1578821302044" duration="7000" />
+      <workItem from="1578826945609" duration="1774000" />
+      <workItem from="1578864492946" duration="642000" />
+      <workItem from="1578866814507" duration="80000" />
+      <workItem from="1578875883827" duration="720000" />
+      <workItem from="1578925561826" duration="7000" />
+      <workItem from="1578931348045" duration="447000" />
+      <workItem from="1578931806034" duration="8000" />
+      <workItem from="1579016932426" duration="1773000" />
+      <workItem from="1583692583368" duration="18000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
+  <component name="WindowStateProjectService">
+    <state x="552" y="169" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578778229415">
+      <screen x="0" y="0" width="1920" height="1019" />
+    </state>
+    <state x="552" y="169" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1019/-1920.0.1920.1019@0.0.1920.1019" timestamp="1578778229415" />
+    <state x="480" y="147" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1575619244180">
+      <screen x="0" y="0" width="1600" height="839" />
+    </state>
+    <state x="480" y="147" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1600.839@0.0.1600.839" timestamp="1575619244180" />
+    <state x="690" y="265" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1578782678575">
+      <screen x="0" y="0" width="1920" height="1019" />
+    </state>
+    <state x="690" y="265" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1019/-1920.0.1920.1019@0.0.1920.1019" timestamp="1578782678575" />
+    <state x="740" y="265" key="FileChooserDialogImpl" timestamp="1578776828102">
+      <screen x="0" y="0" width="1920" height="1019" />
+    </state>
+    <state x="740" y="265" key="FileChooserDialogImpl/0.0.1920.1019/-1920.0.1920.1019@0.0.1920.1019" timestamp="1578776828102" />
+    <state x="461" y="153" key="SettingsEditor" timestamp="1578776834728">
+      <screen x="0" y="0" width="1920" height="1019" />
+    </state>
+    <state x="461" y="153" key="SettingsEditor/0.0.1920.1019/-1920.0.1920.1019@0.0.1920.1019" timestamp="1578776834728" />
+    <state x="669" y="152" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1578778147054">
+      <screen x="0" y="0" width="1920" height="1019" />
+    </state>
+    <state x="669" y="152" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1920.1019/-1920.0.1920.1019@0.0.1920.1019" timestamp="1578778147054" />
+    <state x="-1264" y="333" key="com.intellij.ide.util.TipDialog" timestamp="1578931806261">
+      <screen x="-1920" y="0" width="1920" height="1019" />
+    </state>
+    <state x="547" y="274" key="com.intellij.ide.util.TipDialog/0.0.1600.839@0.0.1600.839" timestamp="1575965560138" />
+    <state x="-1264" y="333" key="com.intellij.ide.util.TipDialog/0.0.1920.1019/-1920.0.1920.1019@-1920.0.1920.1019" timestamp="1578931806261" />
+    <state x="-1264" y="333" key="com.intellij.ide.util.TipDialog/0.0.1920.1019/-1920.0.1920.1019@0.0.1920.1019" timestamp="1578821302573" />
+    <state x="-1323" y="144" width="942" height="804" key="find.popup" timestamp="1583692599053">
+      <screen x="-1920" y="0" width="1920" height="1019" />
+    </state>
+    <state x="547" y="203" width="785" height="526" key="find.popup/0.0.1600.839@0.0.1600.839" timestamp="1575641519398" />
+    <state x="-1323" y="144" width="942" height="804" key="find.popup/0.0.1920.1019/-1920.0.1920.1019@-1920.0.1920.1019" timestamp="1583692599053" />
+    <state x="106" y="66" width="1739" height="876" key="find.popup/0.0.1920.1019/-1920.0.1920.1019@0.0.1920.1019" timestamp="1578779971697" />
+    <state x="701" y="144" key="refactoring.ChangeSignatureDialog" timestamp="1578794506003">
+      <screen x="0" y="0" width="1920" height="1019" />
+    </state>
+    <state x="701" y="144" key="refactoring.ChangeSignatureDialog/0.0.1920.1019/-1920.0.1920.1019@0.0.1920.1019" timestamp="1578794506003" />
+    <state x="456" y="190" key="run.anything.popup" timestamp="1575638457988">
+      <screen x="0" y="0" width="1600" height="839" />
+    </state>
+    <state x="456" y="190" key="run.anything.popup/0.0.1600.839@0.0.1600.839" timestamp="1575638457988" />
   </component>
   <component name="masterDetails">
     <states>

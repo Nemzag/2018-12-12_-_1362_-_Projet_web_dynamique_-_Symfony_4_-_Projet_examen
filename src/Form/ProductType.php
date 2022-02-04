@@ -74,7 +74,6 @@ class ProductType extends AbstractType
 		        'label' => "Inséré l'U.R.L. du produit du site du constructeur :"
 	        ])
 
-
 	        ->add('category', EntityType::class, [
 		        'label' => "La catégorie",
 		        'class'  => 'App:Category',

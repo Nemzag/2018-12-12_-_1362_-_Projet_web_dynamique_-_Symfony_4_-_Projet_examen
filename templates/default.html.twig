@@ -80,6 +80,10 @@
             {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_CONTRIBUTOR') %}
 
                 <!-- Nothing displayed -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path ('product_index') }}">Catalogues</a>
+                </li>
+
             {% else %}
 
                 <li class="nav-item">
@@ -132,9 +136,8 @@
                     <a class="dropdown-item" href="{{ path ('category_index') }}">Gestion des Catégories</a>
                 {% endif %}
 
-                {# Gestion des messages #}
-
-                {% if is_granted('ROLE_MODERATOR') %}
+                {# Gestion des commentaires #}
+                {% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN') or is_granted('ROLE_MODERATOR') %}
 
                     <a class="dropdown-item" href="{{ path ('comment_index') }}">Gestion des Commêntaires</a>
 
@@ -147,13 +150,6 @@
                     <small class="text-muted">Si nouveau user, affiche erreur,<br>
                         car aucun commêntaire ne existe !<br>Je n'ai pas trouvé
                     de solution<br>en ligne, à ce trouble.</small></a>
-
-                {% endif %}
-
-                {# Gestion des commentaires #}
-                {% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN') %}
-
-                    <a class="dropdown-item" href="{{ path ('comment_index') }}">Gestion des Commêntaires</a>
 
                 {% endif %}
 

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 13 déc. 2018 à 08:04
--- Version du serveur :  5.7.23
--- Version de PHP :  7.2.10
+-- Host: localhost:3306
+-- Generation Time: Dec 06, 2019 at 08:20 AM
+-- Server version: 5.7.24
+-- PHP Version: 7.2.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `2018_symfony_projet_examen`
+-- Database: `2018_symfony_projet_examen`
 --
 CREATE DATABASE IF NOT EXISTS `2018_symfony_projet_examen` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `2018_symfony_projet_examen`;
@@ -27,18 +27,16 @@ USE `2018_symfony_projet_examen`;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `category`
+-- Table structure for table `category`
 --
 
-DROP TABLE IF EXISTS `category`;
-CREATE TABLE IF NOT EXISTS `category` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `categories` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL,
+  `categories` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Déchargement des données de la table `category`
+-- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`id`, `categories`) VALUES
@@ -62,24 +60,19 @@ INSERT INTO `category` (`id`, `categories`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `comment`
+-- Table structure for table `comment`
 --
 
-DROP TABLE IF EXISTS `comment`;
-CREATE TABLE IF NOT EXISTS `comment` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `comment` (
+  `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `comment` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `date_added` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `comment_constraint` (`user_id`,`product_id`),
-  KEY `IDX_9474526CA76ED395` (`user_id`),
-  KEY `IDX_9474526C4584665A` (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `date_added` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Déchargement des données de la table `comment`
+-- Dumping data for table `comment`
 --
 
 INSERT INTO `comment` (`id`, `user_id`, `product_id`, `comment`, `date_added`) VALUES
@@ -102,17 +95,15 @@ INSERT INTO `comment` (`id`, `user_id`, `product_id`, `comment`, `date_added`) V
 -- --------------------------------------------------------
 
 --
--- Structure de la table `migration_versions`
+-- Table structure for table `migration_versions`
 --
 
-DROP TABLE IF EXISTS `migration_versions`;
-CREATE TABLE IF NOT EXISTS `migration_versions` (
-  `version` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`version`)
+CREATE TABLE `migration_versions` (
+  `version` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Déchargement des données de la table `migration_versions`
+-- Dumping data for table `migration_versions`
 --
 
 INSERT INTO `migration_versions` (`version`) VALUES
@@ -157,23 +148,18 @@ INSERT INTO `migration_versions` (`version`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `notation`
+-- Table structure for table `notation`
 --
 
-DROP TABLE IF EXISTS `notation`;
-CREATE TABLE IF NOT EXISTS `notation` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `notation` (
+  `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
-  `notation` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `notation_constraint` (`user_id`,`product_id`),
-  KEY `IDX_268BC95A76ED395` (`user_id`),
-  KEY `IDX_268BC954584665A` (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `notation` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Déchargement des données de la table `notation`
+-- Dumping data for table `notation`
 --
 
 INSERT INTO `notation` (`id`, `user_id`, `product_id`, `notation`) VALUES
@@ -212,12 +198,11 @@ INSERT INTO `notation` (`id`, `user_id`, `product_id`, `notation`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `product`
+-- Table structure for table `product`
 --
 
-DROP TABLE IF EXISTS `product`;
-CREATE TABLE IF NOT EXISTS `product` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `product` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` double NOT NULL,
   `description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -226,14 +211,11 @@ CREATE TABLE IF NOT EXISTS `product` (
   `date_added` datetime NOT NULL,
   `category_id` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `IDX_D34A04AD12469DE2` (`category_id`),
-  KEY `IDX_D34A04ADA76ED395` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Déchargement des données de la table `product`
+-- Dumping data for table `product`
 --
 
 INSERT INTO `product` (`id`, `name`, `price`, `description`, `promotion`, `image`, `date_added`, `category_id`, `user_id`, `url`) VALUES
@@ -250,17 +232,17 @@ INSERT INTO `product` (`id`, `name`, `price`, `description`, `promotion`, `image
 (11, 'Creative Labs ZxR', 249.95, 'Chip / DSP Creative Sound Core3D\r\nBus	PCI Express 1x\r\nCompatibilité Slots	PCI Express 1x\r\nPCI Express 2.0 1x\r\nPCI Express 3.0 1x\r\nLow profile	Non\r\nNombre de canaux audio	5.1\r\nEntrées externes	Micro (Jack 6.35mm)\r\nLine OUT (2x RCA Femelle)\r\nToslink Femelle\r\nSorties externes	Stéréo arrière (Jack 3.5mm)\r\nSubwoofer (Jack 3.5mm)\r\nCasque (Jack 6.35mm)\r\nLine OUT (2x RCA Femelle)\r\nToslink Femelle', 12, 'creative_labs_zxr.jpg', '2018-12-02 14:04:04', 10, 3, 'https://fr.creative.com/p/sound-cards/sound-blaster-zxr'),
 (14, 'Microsoft LifeChat LX-3000', 39.95, 'Microphone de qualité.', 10, 'microsoft_lifechat_lx-3000.jpg', '2018-12-11 12:05:00', 14, 2, 'https://www.microsoft.com/accessories/en-us/products/headsets/lifechat-lx-3000/jug-00013'),
 (15, 'Microsoft LifeCam Studio', 99.99, 'Caméra HD pour ordinateur.', 0, 'microsoft_lifecam_studio.jpg', '2018-12-11 18:32:00', 11, 2, 'https://www.microsoft.com/accessories/fr-fr/products/webcams/lifecam-studio/q2f-00009'),
-(16, 'Toshiba P300 2To', 69.95, 'Disque dur japonais pour stockage de donnée.\r\n<h6 class=\"h6\">Caractéristiques :</h6>Stockage puissant\r\nFiabilité et performances\r\nProtection et données\r\n\r\n<h6 class=\"h6\">Spécifications Techniques :</h6>Capacité : 2 To\r\nVitesse : 7200 Tr/min\r\nFormat : 3.5\"\r\nMémoire Cache : 64 Mo\r\nInterface : SATA', 20, 'toshiba_p300_2to.jpg', '2018-12-11 18:36:00', 8, 2, 'https://www.toshiba.eu/Contents/Toshiba_teg/EU/Others/HDD_datasheets/P300_High-Performance_Hard_Drive_Datasheet.pdf');
+(16, 'Toshiba P300 2To', 69.95, 'Disque dur japonais pour stockage de donnée.\r\n<h6 class=\"h6\">Caractéristiques :</h6>Stockage puissant\r\nFiabilité et performances\r\nProtection et données\r\n\r\n<h6 class=\"h6\">Spécifications Techniques :</h6>Capacité : 2 To\r\nVitesse : 7200 Tr/min\r\nFormat : 3.5\"\r\nMémoire Cache : 64 Mo\r\nInterface : SATA', 20, 'toshiba_p300_2to.jpg', '2018-12-11 18:36:00', 8, 2, 'https://www.toshiba.eu/Contents/Toshiba_teg/EU/Others/HDD_datasheets/P300_High-Performance_Hard_Drive_Datasheet.pdf'),
+(17, 'Nvidia RTX Titan', 800.1, 'La meilleur carte du monde.', 0, 'default.png', '2019-01-17 12:28:00', 4, 2, 'https://nvidia.com');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `user`
+-- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
   `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -270,16 +252,15 @@ CREATE TABLE IF NOT EXISTS `user` (
   `presentation` longtext COLLATE utf8mb4_unicode_ci,
   `inscription_date` datetime NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `roles` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `roles` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Déchargement des données de la table `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `username`, `email`, `password`, `first_name`, `last_name`, `birth_day`, `presentation`, `inscription_date`, `image`, `roles`) VALUES
-(1, 'Gazmen', 'Gazmen@domain.ext', '$2y$10$DJ6mU0kHdHLO7h7cLEKI9eXWyL.jql0eFXN/XFPLg34trqIM8hXq6', 'Gazmen', 'Arifi', '1979-09-30 13:01:05', 'Etudiant motivé en web‑développement à l\'I.E.P.S.C.F.', '2018-12-02 09:25:03', '1999-Gazmen-Arifi-(I.A.T.A.).png', 1),
+(1, 'Gazmen', 'gazmen@domain.ext', '$2y$10$DJ6mU0kHdHLO7h7cLEKI9eXWyL.jql0eFXN/XFPLg34trqIM8hXq6', 'Gazmen', 'Arifi', '1979-09-30 13:01:05', 'Etudiant motivé en web‑développement à l\'I.E.P.S.C.F.', '2018-12-02 09:25:03', '1999-Gazmen-Arifi-(I.A.T.A.).png', 1),
 (2, 'Patrick', 'patrick.marthus@iepscf-namur.be', '$2y$10$9ErHw9jjheeQbkmMlhE9T.yJNRxiNovg/PW.9DOkWlxhDX1iVuRpW', 'Patrick', 'Marthus', '1968-08-05 00:00:00', 'Enseignant à l\'I.E.P.S.C.F. de Namur.', '2018-12-03 00:00:00', 'patrick-marthus.png', 2),
 (3, 'Contributor', 'contributor@domain.ext', '$2y$10$huvgjb7eWlVnSTEjLQNGxex9qmVnWVWaEJcUOVkHsTihm.h0EhAR6', 'Contributeur', 'Parfait', '2018-12-02 09:26:27', 'Contributeur et correcteur de la liste des articles et du contenues.', '2018-12-02 09:27:20', 'contributor.png', 3),
 (4, 'Moderator', 'moderator@domain.ext', '$2y$10$g5U2t4heM1dimU7rVLkq9.yI93jEysrzmm16ZpbnTGMe/w3ZDFKaW', 'Moderateur', 'Exigeant', '2018-12-02 09:27:47', 'Modérateur & vérificateur des commentaires en ligne.\r\n', '2018-12-02 09:28:06', 'moderator.png', 4),
@@ -289,25 +270,107 @@ INSERT INTO `user` (`id`, `username`, `email`, `password`, `first_name`, `last_n
 (18, 'Shalavana', 'shalavana@domain.ext', '$2y$13$TJohZOMQSOmZfAMhCzx8K.XoUoH49ULenZ9hp0gAB/TWo2Tjw/Edm', 'Shalavana', 'Talamaga', '2009-01-01 00:00:00', 'Taprafasa !', '2018-12-12 00:00:00', '3e82ab34e43a8bd56ae6958421417031.jpeg', 5);
 
 --
--- Contraintes pour les tables déchargées
+-- Indexes for dumped tables
 --
 
 --
--- Contraintes pour la table `comment`
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `comment`
+--
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `comment_constraint` (`user_id`,`product_id`),
+  ADD KEY `IDX_9474526CA76ED395` (`user_id`),
+  ADD KEY `IDX_9474526C4584665A` (`product_id`);
+
+--
+-- Indexes for table `migration_versions`
+--
+ALTER TABLE `migration_versions`
+  ADD PRIMARY KEY (`version`);
+
+--
+-- Indexes for table `notation`
+--
+ALTER TABLE `notation`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `notation_constraint` (`user_id`,`product_id`),
+  ADD KEY `IDX_268BC95A76ED395` (`user_id`),
+  ADD KEY `IDX_268BC954584665A` (`product_id`);
+
+--
+-- Indexes for table `product`
+--
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `IDX_D34A04AD12469DE2` (`category_id`),
+  ADD KEY `IDX_D34A04ADA76ED395` (`user_id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `comment`
+--
+ALTER TABLE `comment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `notation`
+--
+ALTER TABLE `notation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+--
+-- AUTO_INCREMENT for table `product`
+--
+ALTER TABLE `product`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `comment`
 --
 ALTER TABLE `comment`
   ADD CONSTRAINT `FK_9474526C4584665A` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
   ADD CONSTRAINT `FK_9474526CA76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 --
--- Contraintes pour la table `notation`
+-- Constraints for table `notation`
 --
 ALTER TABLE `notation`
   ADD CONSTRAINT `FK_268BC954584665A` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
   ADD CONSTRAINT `FK_268BC95A76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 --
--- Contraintes pour la table `product`
+-- Constraints for table `product`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `FK_D34A04AD12469DE2` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`),

@@ -39,8 +39,8 @@ class Comment
      * @Assert\Length(
      *     min="4",
      *     max="2000",
-     *     minMessage="La notation doit être de 4 caractères minimum.",
-     *     maxMessage="Le notation doit être de 2000 caractères maximum.",
+     *     minMessage="La notation doit être de {{ limit }} caractères minimum.",
+     *     maxMessage="Le notation doit être de {{ limit }} caractères maximum.",
      * )
      * @Assert\Regex(
      *     pattern = "/^[A-Za-z0-9 _.…«»,;‑-‧⁠]*$/",
@@ -62,12 +62,28 @@ class Comment
      */
     private $user;
 
+    //=======================================================================================
+
     // @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="comments")
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Product")
      * @ORM\JoinColumn(nullable=false)
      */
     private $product;
+
+	public function getProduct(): ?Product
+	{
+		return $this->product;
+	}
+
+	public function setProduct(?Product $product): self
+	{
+		$this->product = $product;
+
+		return $this;
+	}
+
+    //=======================================================================================
 
     public function getId(): ?int
     {
@@ -110,15 +126,5 @@ class Comment
         return $this;
     }
 
-    public function getProduct(): ?Product
-    {
-        return $this->product;
-    }
 
-    public function setProduct(?Product $product): self
-    {
-        $this->product = $product;
-
-        return $this;
-    }
 }
